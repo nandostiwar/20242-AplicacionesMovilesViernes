@@ -10,6 +10,14 @@ function Calculadora(){
     function handleSubmit(e){
         e.preventDefault();
         const operacion = e.target.value;
+        
+        
+        //Valores modificados de la Calcularoracdcd 
+        if (operacion == "Sumar") {setResultado(parseFloat(number1)+ parseFloat(number2))}
+        if (operacion == "restar") {setResultado(parseFloat(number1)- parseFloat(number2))}
+        if (operacion == "multiplicar") {setResultado(parseFloat(number1)* parseFloat(number2))}
+
+
         fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
