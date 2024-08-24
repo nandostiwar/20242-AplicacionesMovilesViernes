@@ -1,2 +1,1 @@
-nando="ok"
-mensjae = "hoy es viernes"
+msg="loborre"
