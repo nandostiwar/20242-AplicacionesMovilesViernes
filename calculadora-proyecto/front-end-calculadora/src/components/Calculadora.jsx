@@ -10,6 +10,13 @@ function Calculadora(){
     function handleSubmit(e){
         e.preventDefault();
         const operacion = e.target.value;
+<<<<<<< HEAD
+=======
+        if (operacion == "sumar"){setResultado(parseFloat(number1)+parseFloat(number2))}
+        if (operacion == "restar"){setResultado(parseFloat(number1)-parseFloat(number2))}
+        if (operacion == "multiplicar"){setResultado(parseFloat(number1)*parseFloat(number2))}
+
+>>>>>>> main
         fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
