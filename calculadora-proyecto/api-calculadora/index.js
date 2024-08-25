@@ -4,7 +4,11 @@ const router = require('./routes/calculadora.routes.js');
 const cors = require('cors');
 
 const app = express();
+<<<<<<< HEAD
 
+=======
+// Esto es una prueba 
+>>>>>>> 362b0a3e6742b51fc04c8495e2d69f5676745f09
 app.use(urlencoded({extended: true}));
 app.use(json());
 app.use(cors());
