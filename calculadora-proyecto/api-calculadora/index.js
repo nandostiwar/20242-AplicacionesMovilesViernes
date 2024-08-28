@@ -3,6 +3,8 @@ const {urlencoded, json} = require('express');
 const router = require('./routes/calculadora.routes.js');
 const cors = require('cors');
 
+//prueba
+
 const app = express();
 
 app.use(urlencoded({extended: true}));
