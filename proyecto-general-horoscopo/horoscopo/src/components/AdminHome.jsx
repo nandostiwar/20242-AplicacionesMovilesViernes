@@ -1,14 +1,28 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import './styles/AdminHome.css'
 import { useState } from "react";
+import UserHome from "./UserHome";
 
-function AdminHome({user}){
+
+
+
+function AdminHome({user, setenviarTexto}){// cambio
     if(user!=='admin' || !user){
         return <Navigate to="/"/>
     }
     const home = useNavigate();
+    
     const [textoEditar, setTextoEditar] = useState("");
     const [signoEditar, setSignoEditar] = useState("");
+    const [almacnarArry, setalmacnarArry]=useState([]);
+    
+    const almacenarobj= {
+        signo:"",
+        texto:""
+    }
+
+    almacenarobj.signo=signoEditar
+    almacenarobj.texto=textoEditar
 
     function handleSelect(event){
         const signo = event.target.value;
@@ -22,14 +36,21 @@ function AdminHome({user}){
     }
 
     function handleClick(e){
-        // console.log(signoEditar);
-        // console.log(textoEditar);
+        
         e.preventDefault();
-        fetch(`http://localhost:4000/v1/signos/${signoEditar}`, {
-            method: 'PATCH',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({"textoEditar": textoEditar})
-        })
+        
+        if (almacenarobj){
+            
+            setalmacnarArry([...almacnarArry, almacenarobj]);
+            console.log(almacnarArry)
+        }
+    }
+
+    const enviar=()=>{
+        
+        alert("se envio")
+        setenviarTexto(almacnarArry);
+
     }
 
     return (
@@ -52,10 +73,14 @@ function AdminHome({user}){
             <textarea id="textoEditar" cols="50" rows="10" onChange={(e)=> setTextoEditar(e.target.value)}>
 
             </textarea>
-            <button id="btnEditar" onClick={handleClick}>Editar</button>
+            <button id="btnEditar" onClick={handleClick} >Editar</button>
+            <button id="btnEditar" onClick={enviar} >Enviar</button>
             <button id="btnHomeAdmin" onClick={goHome}>Home</button>
+           
         </div>
     )
 }
+
+
 
 export default AdminHome;

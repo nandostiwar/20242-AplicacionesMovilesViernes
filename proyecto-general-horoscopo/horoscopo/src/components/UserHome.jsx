@@ -2,25 +2,60 @@ import { Navigate, useNavigate } from "react-router-dom";
 import './styles/UserHome.css';
 import TextSigno from "./TextSigno.jsx";
 import { useState } from "react";
+import AdminHome from "./AdminHome.jsx";
 
-function UserHome({user}){
+
+
+
+
+function UserHome({user,enviarTexto}){
     if(user!=="user" || !user){
         return <Navigate to="/"/>
     }
-    const home = useNavigate();
+    const home = useNavigate(enviarTexto);
     const [textoSigno, setTextoSigno] = useState('');
+    
 
     function goHome(){
         home("/");
     }
 
     async function handleSelect(event){
-        const signo = event.target.value;
-        if(signo!=="0"){
-            fetch(`http://localhost:4000/v1/signos/${signo}`)
-                .then(response => response.json())
-                .then(responseData => setTextoSigno(responseData))
-        } 
+        const signo1 = event.target.value;
+
+         for(let i= 0; i < enviarTexto.length; i++){
+
+            const {signo} =enviarTexto[i]
+
+            if(signo === signo1){
+                const {texto} = enviarTexto[i];
+                setTextoSigno(texto)
+            }
+        }
+        
+        console.log(textoSigno);
+        // setTextoSigno("")
+
+            
+     
+        
+    //     for(let i = 0; i< almacnarArry.length; i++){
+            
+    //     if (almacnarArry[i].signo == signo){
+
+    //     setTextoSigno(almacnarArry[i].texto)
+
+
+    // }
+
+
+    // }   
+
+       
+
+
+    
+        
     }
 
     return (
@@ -42,7 +77,13 @@ function UserHome({user}){
             </select>
             <TextSigno texto={textoSigno}/>
             <button id="btnHome" onClick={goHome}>Home</button>
+          
+           
+            
         </div>
+         
+        
+        
     )
 }
 
