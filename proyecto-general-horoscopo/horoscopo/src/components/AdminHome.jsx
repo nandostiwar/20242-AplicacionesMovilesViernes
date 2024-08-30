@@ -1,14 +1,25 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import './styles/AdminHome.css'
 import { useState } from "react";
+import UserHome from "./UserHome";
 
-function AdminHome({user}){
+function AdminHome({user, setenviarTexto}){
     if(user!=='admin' || !user){
         return <Navigate to="/"/>
     }
     const home = useNavigate();
     const [textoEditar, setTextoEditar] = useState("");
     const [signoEditar, setSignoEditar] = useState("");
+    const [almacenarArray, setalmacenarArray]=useState([]);
+
+    const almacenarObj= {
+        signo:"",
+        texto:""
+    }
+
+    almacenarObj.signo=signoEditar
+    almacenarObj.texto=textoEditar
+
 
     function handleSelect(event){
         const signo = event.target.value;
@@ -22,6 +33,23 @@ function AdminHome({user}){
     }
 
     function handleClick(e){
+        
+        e.preventDefault();
+        
+        if (almacenarObj){
+            
+            setalmacenarArray([...almacenarArray, almacenarObj]);
+            console.log(almacenarArray)
+        }
+    }
+
+    const enviar=()=>{
+        
+        alert("se envio")
+        setenviarTexto(almacenarArray);
+    }
+/*
+    function handleClick(e){
         // console.log(signoEditar);
         // console.log(textoEditar);
         e.preventDefault();
@@ -31,6 +59,7 @@ function AdminHome({user}){
             body: JSON.stringify({"textoEditar": textoEditar})
         })
     }
+*/
 
     return (
         <div class="container">
@@ -53,6 +82,7 @@ function AdminHome({user}){
 
             </textarea>
             <button id="btnEditar" onClick={handleClick}>Editar</button>
+            <button id="btnEditar" onClick={enviar} >Enviar</button>
             <button id="btnHomeAdmin" onClick={goHome}>Home</button>
         </div>
     )

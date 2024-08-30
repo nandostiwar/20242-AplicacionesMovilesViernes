@@ -1,0 +1,12 @@
+ARIES:Este es un día en el que debes creer, aunque no haya pruebas que respalden a la fe.
+TAURO:Nada de lo que te digan hoy es del todo cierto. Cuidado: lee entre líneas.
+GEMINIS:Vas a hacer una amistad de gran relevancia: vas a reconocerla porque les une el amor por el trabajo bien hecho.
+CANCER:La virtud de la rama no es su resistencia, sino su habilidad para doblarse al capricho del viento, con flexibilidad.
+LEO:No uses una vara si te enfrentas al lobo. Tampoco una escopeta. Hay que domesticarlo
+VIRGO:No avances por la senda más transitada. Tu camino, el menos esperado, es el más certero.
+LIBRA:Cuidado con la persona en la que deposites tu confianza hoy. Podría no merecerla.
+ESCORPIO:Dicen que es mala idea darles perlas a los cerdos, pero siempre puede enseñarles su valor verdadero, si te tomas el tiempo.
+SAGITARIO:La fortuna solo llama una vez. Hoy has de escucharla: tendrá la forma de un problema, pero uno que podrás resolver si te empeñas.
+CAPRICORNIO:Es preciso que guardes silencio ante las palabras duras que se ve van a decir en tu contra. Responderlas solo te pone al nivel de tus rivales.
+ACUARIO:Ante las ofensas nunca hay que responder. El calor del momento no es justificación suficiente para perder los papales y ponerte al nivel de tu agresor.
+PISCIS:No tengas prisa por volver a tu casa en este día, porque mientras te rodean los que te amas, estás en casa.

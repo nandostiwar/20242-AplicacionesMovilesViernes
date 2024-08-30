@@ -2,18 +2,35 @@ import { Navigate, useNavigate } from "react-router-dom";
 import './styles/UserHome.css';
 import TextSigno from "./TextSigno.jsx";
 import { useState } from "react";
+import AdminHome from "./AdminHome.jsx";
 
-function UserHome({user}){
+function UserHome({user, enviarTexto}){
     if(user!=="user" || !user){
         return <Navigate to="/"/>
     }
-    const home = useNavigate();
+    const home = useNavigate(enviarTexto);
     const [textoSigno, setTextoSigno] = useState('');
 
     function goHome(){
         home("/");
     }
 
+    async function handleSelect(event){
+        const signo1 = event.target.value;
+
+         for(let i= 0; i < enviarTexto.length; i++){
+
+            const {signo} = enviarTexto[i]
+
+            if(signo === signo1){
+                const {texto} = enviarTexto[i];
+                setTextoSigno(texto)
+            }
+        }
+        
+        console.log(textoSigno);
+    }
+/*
     async function handleSelect(event){
         const signo = event.target.value;
         if(signo!=="0"){
@@ -22,7 +39,7 @@ function UserHome({user}){
                 .then(responseData => setTextoSigno(responseData))
         } 
     }
-
+*/
     return (
         <div className="container">
             <div id="txtSeleccionPage"><h3>Selecciona tu signo zodiacal</h3></div>
