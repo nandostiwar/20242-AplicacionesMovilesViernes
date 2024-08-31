@@ -21,6 +21,11 @@ function multiply(a, b) {
     let number2 = parseInt(b);
     return number1 * number2;
 }
+function divide(a, b) {
+    let number1 = parseInt(a);
+    let number2 = parseInt(b);
+    return number1 / number2;
+}
 
 /**
  * Obtener el número mayor de dos cantidades numéricas
@@ -62,6 +67,7 @@ module.exports = {
     add,
     subtract,
     multiply,
+    divide,
     max,
     min,
     average

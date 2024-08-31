@@ -26,6 +26,15 @@ function multiplicar(req, res) {
         resultado: result
     })
 }
+function dividir(req, res) {
+    const { body } = req;
+    const { number1, number2 } = body;
+    const result = divide(number1, number2);
+    res.json({
+        resultado: result
+    });
+}
+
 
 function mayor(req, res) {
     const { body } = req;
@@ -65,6 +74,7 @@ module.exports = {
     sumar,
     restar,
     multiplicar,
+    dividir,
     mayor,
     menor,
     promedio

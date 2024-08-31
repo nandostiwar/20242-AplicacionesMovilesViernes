@@ -6,6 +6,7 @@ router
     .post('/sumar', calculadoraControllers.sumar)
     .post('/restar', calculadoraControllers.restar)
     .post('/multiplicar', calculadoraControllers.multiplicar)
+    .post('/dividir', calculadoraControllers.dividir)
     .post('/mayor', calculadoraControllers.mayor)
     .post('/menor', calculadoraControllers.menor)
     .post('/promedio', calculadoraControllers.promedio)
