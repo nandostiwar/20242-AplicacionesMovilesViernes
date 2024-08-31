@@ -32,18 +32,15 @@ function Calculadora(){
                 <input className="btnEnviar" value="sumar" onClick={operation}/>
                 <input className="btnEnviar" value="restar" onClick={operation}/>
                 <input  className="btnEnviar" value="multiplicar" onClick={operation}/>
+                <input className="btnEnviar" value="mayor" onClick={operation} />
+                <input className="btnEnviar" value="menor" onClick={operation} />
+                <input className="btnEnviar" value="prome" onClick={operation} />
+
             </form>
             <Resultado resultado={"El resultado es "+ resultado}/>
         </div>
     )
 
-    // function sumar(event) {
-    //     const sumaTotal = parseInt(number1) + parseInt(number2);
-    // }
-    // function resta(event){
-    //     const restaTotal = parseInt(number1) - parseInt(number2);
-    //     console.log(restaTotal)
-    // }
 
     function operation(event) {
 
@@ -59,10 +56,20 @@ function Calculadora(){
             case 'multiplicar':
                 total = parseInt(number1) * parseInt(number2);
                 break;
+            case 'mayor':
+                total = parseInt(number1) > parseInt(number2);
+                break;
+            case 'menor':
+                total = parseInt(number1) < parseInt(number2);
+                break;
+            case 'prome':
+                total = (parseInt(number1) + parseInt(number2))/2;
+                break;
 
         }
 
         console.log('Total', total)
+        setResultado(total);
     }
 
 }

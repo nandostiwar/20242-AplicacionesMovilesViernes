@@ -2,6 +2,7 @@ body{
     text-align: center;
     justify-content: center;
     display: flex;
+    background: linear-gradient(90deg, #00ffff,#ff00c3);;
 }
 
 .container{
@@ -10,7 +11,7 @@ body{
     background-color: gray;
     padding: 50px;
     margin: 50px;
-    border-radius: 50px;
+    border-radius: 20px;
     width: 500px;
     display: block;
 }
@@ -21,19 +22,24 @@ body{
     border-radius: 20px;
     height: 35px;
     text-align: center;
+
 }
 
 .btnEnviar{
-    border-radius: 10px;
+    border-radius: 50px;
     width: 150px;
     height: 50px;
     background-color: rgb(121, 89, 89);
     color: white;
     border-color: rgb(121, 89, 89);
     margin-left: 10px;
+    text-align: center;
+    letter-spacing: 2px;
+    margin: 10px;
 }
 
 #txtCalculadora{
     color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
