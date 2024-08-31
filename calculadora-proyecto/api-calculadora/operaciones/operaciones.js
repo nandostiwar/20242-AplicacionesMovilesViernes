@@ -10,17 +10,36 @@ function add(a, b) {
     return number1 + number2;
 }
 
+/**
+ * Restar dos cantidades numéricas
+ * @param {Number} a 
+ * @param {Number} b 
+ * @returns Number
+ */
 function subtract(a, b) {
     let number1 = parseInt(a);
     let number2 = parseInt(b);
     return number1 - number2;
 }
 
+/**
+ * Multiplicar dos cantidades numéricas
+ * @param {Number} a 
+ * @param {Number} b 
+ * @returns Number
+ */
 function multiply(a, b) {
     let number1 = parseInt(a);
     let number2 = parseInt(b);
     return number1 * number2;
 }
+
+/**
+ * Dividir dos cantidades numéricas
+ * @param {Number} a 
+ * @param {Number} b 
+ * @returns Number
+ */
 function divide(a, b) {
     let number1 = parseInt(a);
     let number2 = parseInt(b);
@@ -71,4 +90,4 @@ module.exports = {
     max,
     min,
     average
-}
+};

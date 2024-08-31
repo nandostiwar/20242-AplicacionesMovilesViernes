@@ -1,4 +1,4 @@
-const { add, subtract, multiply } = require('../operaciones/operaciones.js');
+const { add, subtract, multiply, divide, max, min, average } = require('../operaciones/operaciones.js');
 
 function sumar(req, res) {
     const { body } = req;
@@ -15,7 +15,7 @@ function restar(req, res) {
     const result = subtract(number1, number2);
     res.json({
         resultado: result
-    })
+    });
 }
 
 function multiplicar(req, res) {
@@ -24,8 +24,9 @@ function multiplicar(req, res) {
     const result = multiply(number1, number2);
     res.json({
         resultado: result
-    })
+    });
 }
+
 function dividir(req, res) {
     const { body } = req;
     const { number1, number2 } = body;
@@ -35,27 +36,19 @@ function dividir(req, res) {
     });
 }
 
-
 function mayor(req, res) {
     const { body } = req;
     const { number1, number2 } = body;
-    let result = 0;
-    if (parseInt(number1) > parseInt(number2)) { result = parseInt(number1) }
-    else { result = parseInt(number2) }
+    const result = max(number1, number2);
     res.json({
         resultado: result
-    })
+    });
 }
 
 function menor(req, res) {
     const { body } = req;
     const { number1, number2 } = body;
-    let result = 0;
-    if (parseInt(number1) < parseInt(number2)) {
-        result = parseInt(number1);
-    } else {
-        result = parseInt(number2);
-    }
+    const result = min(number1, number2);
     res.json({
         resultado: result
     });
@@ -64,7 +57,7 @@ function menor(req, res) {
 function promedio(req, res) {
     const { body } = req;
     const { number1, number2 } = body;
-    const result = (parseInt(number1) + parseInt(number2)) / 2;
+    const result = average(number1, number2);
     res.json({
         resultado: result
     });
