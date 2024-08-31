@@ -6,6 +6,7 @@ function Calculadora(){
     const [number1, setNumber1] = useState('');
     const [number2, setNumber2] = useState('');
     const [resultado, setResultado] = useState('');
+    
 
     function handleSubmit(e){
         e.preventDefault();
@@ -13,7 +14,10 @@ function Calculadora(){
         if (operacion == "sumar"){setResultado(parseFloat(number1)+parseFloat(number2))}
         if (operacion == "restar"){setResultado(parseFloat(number1)-parseFloat(number2))}
         if (operacion == "multiplicar"){setResultado(parseFloat(number1)*parseFloat(number2))}
-
+        if (operacion == ">"){setResultado(parseFloat(number1)>parseFloat(number2))}
+        if (operacion == "<"){setResultado(parseFloat(number1)<parseFloat(number2))}
+        if (operacion == "prom"){(setResultado((parseFloat(number1)+parseFloat(number2))/2))}
+        
         fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
@@ -36,6 +40,11 @@ function Calculadora(){
                 <input type="submit" className="btnEnviar" value="sumar" onClick={handleSubmit}/>
                 <input type="submit" className="btnEnviar" value="restar" onClick={handleSubmit}/>
                 <input type="submit" className="btnEnviar" value="multiplicar" onClick={handleSubmit}/>
+                <input type="submit" className="btnEnviar" value=">" onClick={handleSubmit}/>
+                <input type="submit" className="btnEnviar" value="<" onClick={handleSubmit}/>
+                <input type="submit" className="btnEnviar" value="prom" onClick={handleSubmit}/>
+                <input type="submit" className="btnEnviar" value="ok" onClick={handleSubmit}/>
+                
             </form>
             <Resultado resultado={"El resultado es "+ resultado}/>
         </div>
