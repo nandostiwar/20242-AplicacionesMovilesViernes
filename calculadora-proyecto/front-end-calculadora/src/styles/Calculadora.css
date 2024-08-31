@@ -7,19 +7,19 @@ body{
 .container{
     text-align: center;
     justify-content: center;
-    background-color: gray;
+    background-color: rgb(139, 139, 143);
     padding: 50px;
     margin: 50px;
-    border-radius: 50px;
-    width: 500px;
+    border-radius: 30px;
+    width: 550px;
     display: block;
 }
 
 .number{
-    margin: 20px;
+    margin: 10px;
     height: 20px;
     border-radius: 20px;
-    height: 35px;
+    height: 40px;
     text-align: center;
 }
 
@@ -27,10 +27,11 @@ body{
     border-radius: 10px;
     width: 150px;
     height: 50px;
-    background-color: rgb(121, 89, 89);
-    color: white;
-    border-color: rgb(121, 89, 89);
+    background-color: rgb(33, 32, 78);
+    color: rgb(240, 240, 240);
+    border-color: rgb(24, 31, 66);
     margin-left: 10px;
+    margin: 8px;
 }
 
 #txtCalculadora{
