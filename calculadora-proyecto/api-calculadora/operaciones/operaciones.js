@@ -8,7 +8,8 @@
 function add(a, b){
     let number1 = parseInt(a);
     let number2 = parseInt(b);
-    return number1 + number2;
+    return number1 + number2;\
+    
 }
 
 function subtract(a, b){

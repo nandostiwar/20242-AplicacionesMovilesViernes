@@ -7,6 +7,7 @@ function sumar(req, res){
     res.json({
         resultado: result
     });
+    
 }
 
 function restar(req, res){
