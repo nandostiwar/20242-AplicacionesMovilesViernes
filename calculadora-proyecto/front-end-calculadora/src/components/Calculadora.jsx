@@ -11,11 +11,14 @@ function Calculadora(){
         e.preventDefault();
         const operacion = e.target.value;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         if (operacion == "sumar"){setResultado(parseFloat(number1)+parseFloat(number2))}
         if (operacion == "restar"){setResultado(parseFloat(number1)-parseFloat(number2))}
         if (operacion == "multiplicar"){setResultado(parseFloat(number1)*parseFloat(number2))}
 
+>>>>>>> main
+=======
 >>>>>>> main
         fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
             method: 'POST',

@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
+>>>>>>> main
+=======
 >>>>>>> main
 const {add, subtract, multiply} = require('../operaciones/operaciones.js');
 
@@ -9,8 +12,11 @@ function sumar(req, res){
     const {number1, number2} = body;
     const result = add(number1, number2);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     console.log("num1: " + String(number1) + " num2: " + String(number2) + " y la suma: " + String(result))
+>>>>>>> main
+=======
 >>>>>>> main
     res.json({
         resultado: result
