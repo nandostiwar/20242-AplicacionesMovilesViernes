@@ -35,20 +35,54 @@ function AdminHome({user}){
     return (
         <div class="container">
             <h2 id="textoAdmin">Edita un Signo Zodiacal</h2>
-            <select id="editSignos" onClick={handleSelect}>
-                <option value="0">Seleciona un signo zodiacal</option>
-                <option value="Aries">Aries</option>
-                <option value="Geminis">Géminis</option>
-                <option value="Cancer">Cáncer</option>
-                <option value="Leo">Leo</option>
-                <option value="Virgo">Virgo</option>
-                <option value="Libra">Libra</option>
-                <option value="Escorpio">Escorpio</option>
-                <option value="Sagitario">Sagitario</option>
-                <option value="Capricornio">Capricornio</option>
-                <option value="Acuario">Acuario</option>
-                <option value="Piscis">Piscis</option>
-            </select>
+            <div class="selectores">
+                function verificarOpcion() {
+                var select = document.getElementById("editSelector");
+                var valorSeleccionado = select.value;
+                if (valorSeleccionado === "hombre") {
+                    <select id="editSignos" onClick={handleSelect}>
+                        <option value="0">Seleciona un signo zodiacal</option>
+                        <option value="Aries">Aries</option>
+                        <option value="Geminishombre">Géminis</option>
+                        <option value="Cancer">Cáncer</option>
+                        <option value="Leomujer">Leo</option>
+                        <option value="Virgo">Virgo</option>
+                        <option value="Libra">Libra</option>
+                        <option value="Escorpio">Escorpio</option>
+                        <option value="Sagitario">Sagitario</option>
+                        <option value="Capricornio">Capricornio</option>
+                        <option value="Acuario">Acuario</option>
+                        <option value="Piscis">Piscis</option>
+                    </select>
+                }
+
+            
+                <select id="editSignos" onClick={handleSelect}>
+                    <option value="0">Seleciona un signo zodiacal</option>
+                    <option value="Aries">Aries</option>
+                    <option value="Geminishombre">Géminis</option>
+                    <option value="Cancer">Cáncer</option>
+                    <option value="Leomujer">Leo</option>
+                    <option value="Virgo">Virgo</option>
+                    <option value="Libra">Libra</option>
+                    <option value="Escorpio">Escorpio</option>
+                    <option value="Sagitario">Sagitario</option>
+                    <option value="Capricornio">Capricornio</option>
+                    <option value="Acuario">Acuario</option>
+                    <option value="Piscis">Piscis</option>
+                </select>
+
+                <select id="editSelector" onClick={handleSelect}>
+                    <option value="0">Seleciona un genero</option>
+                    <option value="hombre">hombre</option>
+                    <option value="mujer">mujer</option>
+                    <option value="nino">39 tipos de gay</option>
+                    
+                </select>
+
+            </div>
+            
+
             <textarea id="textoEditar" cols="50" rows="10" onChange={(e)=> setTextoEditar(e.target.value)}>
 
             </textarea>

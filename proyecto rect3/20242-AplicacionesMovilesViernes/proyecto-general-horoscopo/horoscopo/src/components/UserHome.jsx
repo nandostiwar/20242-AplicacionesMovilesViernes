@@ -26,20 +26,32 @@ function UserHome({user}){
     return (
         <div className="container">
             <div id="txtSeleccionPage"><h3>Selecciona tu signo zodiacal</h3></div>
-            <select id="selectSignos" onClick={handleSelect}>
-                <option value="0">Seleciona un signo zodiacal</option>
-                <option value="Aries">Aries</option>
-                <option value="Geminis">Géminis</option>
-                <option value="Cancer">Cáncer</option>
-                <option value="Leo">Leo</option>
-                <option value="Virgo">Virgo</option>
-                <option value="Libra">Libra</option>
-                <option value="Escorpio">Escorpio</option>
-                <option value="Sagitario">Sagitario</option>
-                <option value="Capricornio">Capricornio</option>
-                <option value="Acuario">Acuario</option>
-                <option value="Piscis">Piscis</option>
-            </select>
+            <div>
+                <select id="selectSignos" onClick={handleSelect}>
+                    <option value="0">Seleciona un signo zodiacal</option>
+                    <option value="Aries">Aries</option>
+                    <option value="Geminishombre">Géminis</option>
+                    <option value="Cancer">Cáncer</option>
+                    <option value="Leo">Leo</option>
+                    <option value="Virgo">Virgo</option>
+                    <option value="Libra">Libra</option>
+                    <option value="Escorpio">Escorpio</option>
+                    <option value="Sagitario">Sagitario</option>
+                    <option value="Capricornio">Capricornio</option>
+                    <option value="Acuario">Acuario</option>
+                    <option value="Piscis">Piscis</option>
+                </select>
+                <select id="editSignos" onClick={handleSelect}>
+                        <option value="0">Seleciona un genero</option>
+                        <option value="hombre">hombre</option>
+                        <option value="mujer">mujer</option>
+                        <option value="nino">39 tipos de gay</option>
+                        
+                </select>
+
+            </div>
+            
+
             <TextSigno texto={textoSigno}/>
             <button id="btnHome" onClick={goHome}>Home</button>
         </div>
