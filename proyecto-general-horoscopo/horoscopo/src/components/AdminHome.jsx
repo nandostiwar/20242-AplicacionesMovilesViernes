@@ -35,9 +35,10 @@ function AdminHome({user}){
     return (
         <div class="container">
             <h2 id="textoAdmin">Edita un Signo Zodiacal</h2>
+            <div>
             <select id="editSignos" onClick={handleSelect}>
                 <option value="0">Seleciona un signo zodiacal</option>
-                <option value="Aries">Aries</option>
+                <option value="Aries_hombre">Aries</option>
                 <option value="Geminis">Géminis</option>
                 <option value="Cancer">Cáncer</option>
                 <option value="Leo">Leo</option>
@@ -49,12 +50,27 @@ function AdminHome({user}){
                 <option value="Acuario">Acuario</option>
                 <option value="Piscis">Piscis</option>
             </select>
+            
+            <select id="editgenero" onClick={handleSelect}>
+                <option value="0">Seleccione el genero</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>    
+                <option value="?">?</option>
+                
+
+            </select>
+            </div>
             <textarea id="textoEditar" cols="50" rows="10" onChange={(e)=> setTextoEditar(e.target.value)}>
 
             </textarea>
             <button id="btnEditar" onClick={handleClick}>Editar</button>
             <button id="btnHomeAdmin" onClick={goHome}>Home</button>
         </div>
+        
+    
+        
+        
+        
     )
 }
 

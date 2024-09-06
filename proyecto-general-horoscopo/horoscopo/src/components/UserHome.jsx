@@ -24,11 +24,12 @@ function UserHome({user}){
     }
 
     return (
-        <div className="container">
+        <div className="container"> 
             <div id="txtSeleccionPage"><h3>Selecciona tu signo zodiacal</h3></div>
+            <div>
             <select id="selectSignos" onClick={handleSelect}>
                 <option value="0">Seleciona un signo zodiacal</option>
-                <option value="Aries">Aries</option>
+                <option value="Aries_hombre">Aries</option>
                 <option value="Geminis">Géminis</option>
                 <option value="Cancer">Cáncer</option>
                 <option value="Leo">Leo</option>
@@ -39,11 +40,28 @@ function UserHome({user}){
                 <option value="Capricornio">Capricornio</option>
                 <option value="Acuario">Acuario</option>
                 <option value="Piscis">Piscis</option>
+            
             </select>
+            <select id="selectgenero" onClick={handleSelect}>
+                <option value="0">Selecione su genero</option>  
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+                <option value="terreneitor">terreneitor</option>
+
+                </select>
+            </div>
             <TextSigno texto={textoSigno}/>
             <button id="btnHome" onClick={goHome}>Home</button>
+
+           
+            
         </div>
+
+        
+
     )
+     
+    
 }
 
 export default UserHome;
