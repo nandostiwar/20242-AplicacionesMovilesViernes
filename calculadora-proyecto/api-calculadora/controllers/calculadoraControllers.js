@@ -1,5 +1,5 @@
 
-const {add, subtract, multiply} = require('../operaciones/operaciones.js');
+const {add, subtract, multiply,isGreaterThan,isLessThan,average} = require('../operaciones/operaciones.js');
 
 function sumar(req, res){
     const {body} = req;
@@ -28,8 +28,43 @@ function multiplicar(req, res){
     })
 }
 
+function mayor(req, res){
+    const {body} = req;
+    const {number1, number2} = body;
+    const result = isGreaterThan(number1, number2);
+    res.json({
+        resultado: result
+    })
+}
+
+function menor(req, res){
+    const {body} = req;
+    const {number1, number2} = body;
+    const result = isLessThan(number1, number2);
+    res.json({
+        resultado: result
+    })
+}
+
+function promedio(req, res){
+    const {body} = req;
+    const {number1, number2} = body;
+    const result = average(number1, number2);
+    res.json({
+        resultado: result
+    })
+}
+
+
+
+
+
 module.exports = {
     sumar,
     restar,
-    multiplicar
+    multiplicar,
+    mayor,
+    menor,
+    promedio
+
 }
