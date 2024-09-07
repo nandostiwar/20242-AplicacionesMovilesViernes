@@ -7,21 +7,21 @@ function Calculadora(){
     const [number2, setNumber2] = useState('');
     const [resultado, setResultado] = useState('');
 
-    // function handleSubmit(e){
-    //     e.preventDefault();
-    //     const operacion = e.target.value;
-    //     fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
-    //         method: 'POST',
-    //         headers: {"Content-Type": "application/json"},
-    //         body: JSON.stringify({number1, number2})
-    //     })
-    //         .then(res =>res.json())
-    //         .then(responseData => {
-    //             setResultado(responseData.resultado)
-    //             // setResultado(responseData)
-    //             // console.log(resultado)
-    //         })
-    // }
+    function handleSubmit(e){
+        e.preventDefault();
+        const operacion = e.target.value;
+        fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({number1, number2})
+        })
+            .then(res =>res.json())
+            .then(responseData => {
+                setResultado(responseData.resultado)
+                // setResultado(responseData)
+                // console.log(resultado)
+            })
+    }
 
     return (
         <div className="container">
@@ -29,12 +29,12 @@ function Calculadora(){
             <form>
                 <input type="number" className="number" onChange={(e)=>{setNumber1(e.target.value)}}/><br />
                 <input type="number" className="number" onChange={(e)=>{setNumber2(e.target.value)}}/><br />
-                <input className="btnEnviar" value="sumar" onClick={operation}/>
-                <input className="btnEnviar" value="restar" onClick={operation}/>
-                <input  className="btnEnviar" value="multiplicar" onClick={operation}/>
-                <input className="btnEnviar" value="mayor" onClick={operation} />
-                <input className="btnEnviar" value="menor" onClick={operation} />
-                <input className="btnEnviar" value="prome" onClick={operation} />
+                <input className="btnEnviar" value="sumar" onClick={handleSubmit}/>
+                <input className="btnEnviar" value="restar" onClick={handleSubmit}/>
+                <input  className="btnEnviar" value="multiplicar" onClick={handleSubmit}/>
+                <input className="btnEnviar" value="mayor" onClick={handleSubmit} />
+                <input className="btnEnviar" value="menor" onClick={handleSubmit} />
+                <input className="btnEnviar" value="prome" onClick={handleSubmit} />
 
             </form>
             <Resultado resultado={"El resultado es "+ resultado}/>
