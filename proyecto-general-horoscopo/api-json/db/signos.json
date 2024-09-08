@@ -1,0 +1,57 @@
+{
+  "Aries": {
+    "Hombre": "Hoy es un día perfecto para tomar decisiones valientes.",
+    "Mujer": "Encontrarás nuevas oportunidades si te mantienes positiva.",
+    "Nino": "Descubrirás nuevas aventuras en tu imaginación."
+  },
+  "Geminis": {
+    "Hombre": "Verás cambios en tu trabajo, es tiempo de adaptación.",
+    "Mujer": "Confía en tu intuición para resolver problemas.",
+    "Nino": "Aprenderás algo nuevo de un amigo cercano."
+  },
+  "Cancer": {
+    "Hombre": "Encontrarás apoyo en tus amigos más cercanos.",
+    "Mujer": "Disfrutarás de momentos tranquilos en casa.",
+    "Nino": "Te sentirás feliz jugando con tu mascota."
+  },
+  "Leo": {
+    "Hombre": "Brillarás en cualquier reunión social hoy.",
+    "Mujer": "Inspirarás a otros con tu creatividad y energía.",
+    "Nino": "Tendrás un día lleno de juegos y diversión."
+  },
+  "Virgo": {
+    "Hombre": "Resolverás un problema complejo en el trabajo.",
+    "Mujer": "Encontrarás satisfacción en organizar tu espacio.",
+    "Nino": "Ayudarás a un amigo en la escuela."
+  },
+  "Libra": {
+    "Hombre": "Alcanzarás un equilibrio entre trabajo y ocio.",
+    "Mujer": "Serás apreciada por tu diplomacia en una discusión.",
+    "Nino": "Disfrutarás de un día lleno de actividades artísticas."
+  },
+  "Escorpio": {
+    "Hombre": "Descubrirás una verdad oculta que te beneficiará.",
+    "Mujer": "Atraerás a personas con tu misterio y encanto.",
+    "Nino": "Encontrarás un nuevo pasatiempo interesante."
+  },
+  "Sagitario": {
+    "Hombre": "Debes estar listo para una aventura inesperada.",
+    "Mujer": "Explorarás nuevos horizontes en tu carrera.",
+    "Nino": "Te divertirás explorando la naturaleza."
+  },
+  "Capricornio": {
+    "Hombre": "Verás progreso en tus proyectos a largo plazo.",
+    "Mujer": "Te sentirás más conectada con tu familia.",
+    "Nino": "Te sentirás orgulloso de tus logros en la escuela."
+  },
+  "Acuario": {
+    "Hombre": "Tendrás ideas innovadoras que serán bien recibidas.",
+    "Mujer": "Te unirás a un nuevo grupo con intereses comunes.",
+    "Nino": "Harás nuevos amigos durante el recreo."
+  },
+  "Piscis": {
+    "Hombre": "Encontrarás serenidad en actividades creativas.",
+    "Mujer": "Disfrutarás de un día lleno de inspiración y paz.",
+    "Nino": "Soñarás con mundos mágicos y llenos de aventuras."
+  }
+}
