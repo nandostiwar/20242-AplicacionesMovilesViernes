@@ -57,11 +57,35 @@ const login = async (req, res) => {
         res.status(500).json({ success: false, message: 'Error en el servidor' });
     }
 }
+const changePassword = async (req, res) => {
+    const { username, oldPassword, newPassword } = req.body;
+    try {
+        const credentialsPath = path.join(__dirname, '../../db/credentials.json');
+        const credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+        const credentials = JSON.parse(credentialsData);
+
+        // Verifica si el usuario existe y si la contraseña antigua es correcta
+        const user = credentials[username];
+        if (user && user.password === oldPassword) {
+            // Actualiza la contraseña
+            user.password = newPassword;
+            await fs.writeFile(credentialsPath, JSON.stringify(credentials, null, 2), 'utf-8');
+            res.json({ success: true, message: 'Contraseña cambiada exitosamente' });
+        } else {
+            res.status(400).json({ success: false, message: 'Nombre de usuario o contraseña antigua incorrectos' });
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
+    }
+};
+
 
 
 module.exports = {
     getAllSignos,
     login,
     getOneSigno,
+    changePassword,
     updateSigno
 }

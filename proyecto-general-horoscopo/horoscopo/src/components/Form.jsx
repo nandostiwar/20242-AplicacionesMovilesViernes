@@ -1,11 +1,12 @@
-import './styles/Form.css'
+// src/components/Form.jsx
+import './styles/Form.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Form({ callback }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const goTo = useNavigate();
+    const navigate = useNavigate();
 
     const validateUser = async (event) => {
         event.preventDefault();
@@ -27,7 +28,7 @@ function Form({ callback }) {
             if (data && data.success) {
                 alert(data.message); // Mensaje de éxito
                 callback(data.role);
-                goTo(data.role === 'user' ? "/userHome" : "/adminHome");
+                navigate(data.role === 'user' ? "/userHome" : "/adminHome");
             } else {
                 alert(data.message || 'Error desconocido'); // Mensaje de error
             }
@@ -35,7 +36,7 @@ function Form({ callback }) {
             console.error('Error:', error);
             alert('Error en la solicitud: ' + error.message);
         }
-    }
+    };
 
     return (
         <form onSubmit={validateUser}>
@@ -45,9 +46,16 @@ function Form({ callback }) {
             <h4 className="txt">Contraseña</h4>
             <input type="password" className="entry" onChange={(e) => setPassword(e.target.value)} /><br />
             <input type="submit" value="Ingresar" id="btnEnviar" />
+            {/* Botón para cambiar contraseña */}
+            <button
+                type="button"
+                id="btnChangePassword"
+                onClick={() => navigate('/changePassword')}
+            >
+                Cambiar Contraseña
+            </button>
         </form>
-    )
+    );
 }
 
 export default Form;
-
