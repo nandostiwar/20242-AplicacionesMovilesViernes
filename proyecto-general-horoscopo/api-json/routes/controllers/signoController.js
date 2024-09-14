@@ -34,8 +34,23 @@ const updateSigno = async (req, res)=>{
     })
 }
 
+const compareLogin = async (req, res)=>{
+    const {body} = req;
+    const {username, password} = body;
+    console.log("recibi user: " + username)
+    console.log("recibi pass: " + password)
+
+    //leer el archivo de las crdenciales
+    //comparar si el user y pass que llego pertenece al admin o user
+    
+    res.json({
+        resultado: "user"
+    })
+}
+
 module.exports = {
     getAllSignos,
     getOneSigno,
-    updateSigno
+    updateSigno,
+    compareLogin
 }
