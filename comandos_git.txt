@@ -1,0 +1,14 @@
+git init
+ls
+npm run build
+node .
+cd
+npm run dev
+git Branch
+git switch (cambio de rama)
+git log
+git commit -m ""
+git add .
+git remote add origin
+git status
+git push origin (rama)
