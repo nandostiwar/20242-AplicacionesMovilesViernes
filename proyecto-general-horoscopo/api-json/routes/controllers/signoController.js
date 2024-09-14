@@ -80,12 +80,34 @@ const changePassword = async (req, res) => {
     }
 };
 
+const createUser = async (req, res) => {
+    const { username, password } = req.body;
 
+    console.log('Received data:', { username, password }); // Añade este registro para verificar datos recibidos
+
+    try {
+        const credentialsPath = path.join(__dirname, '../../db/credentials.json');
+        const credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+        const credentials = JSON.parse(credentialsData);
+
+        if (credentials[username]) {
+            return res.status(400).json({ success: false, message: 'Usuario ya existe' });
+        }
+
+        credentials[username] = { password, role: 'user' }; // Establece el rol como 'user'
+        await fs.writeFile(credentialsPath, JSON.stringify(credentials, null, 2), 'utf-8');
+        res.json({ success: true, message: 'Usuario creado exitosamente' });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
+    }
+};
 
 module.exports = {
     getAllSignos,
     login,
     getOneSigno,
     changePassword,
-    updateSigno
+    updateSigno,
+    createUser
 }
