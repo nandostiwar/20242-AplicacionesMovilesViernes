@@ -1,6 +1,13 @@
 const fs = require('fs/promises');
 const path = require('path');
 
+const getlogin = async (req, res)=>{
+    const datos = req.body
+    console.log(datos)
+    const credenciales = await fs.readFile(path.join(__dirname,'../../db/credenciales.json'));
+    const credencialesJson = JSON.parse(credenciales)
+    res.json(credencialesJson);
+}
 const getAllSignos = async (req, res)=>{
     const signo = await fs.readFile(path.join(__dirname,'../../db/signos.json'));
     const signosJson = JSON.parse(signo)
@@ -37,5 +44,6 @@ const updateSigno = async (req, res)=>{
 module.exports = {
     getAllSignos,
     getOneSigno,
-    updateSigno
+    updateSigno,
+    getlogin
 }

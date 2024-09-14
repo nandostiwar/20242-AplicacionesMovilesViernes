@@ -7,7 +7,33 @@ function Form({callback}){
     const [password, setPassword] = useState(null);
     const goTo = useNavigate();
  
-    const validateUser = (event)=>{
+
+    const validateUser = async (event) => {
+        event.preventDefault();
+        fetch(`http://localhost:4000/v1/signos/login}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username, password})
+        })
+            .then(res =>res.json())
+            .then(responseData => {
+                setResultado(responseData.resultado)
+                if(resultado === 'user' ){
+                    callback("user");
+                    goTo("/userHome");
+                }else if (respondeData.resultado === 'admin')
+                    callback("admin");
+                    goTo("/admin")
+                
+                // setResultado(responseData)
+                // console.log(resultado)
+            })
+    };
+    
+
+    /*
+    }
+    /* const validateUser = (event)=>{
         event.preventDefault();
         if(username === 'user' && password === 'user2023'){
             callback("user");
@@ -16,7 +42,7 @@ function Form({callback}){
             callback("admin");
             goTo("/adminHome");
         }
-    }
+    }*/
     return (
         <form onSubmit={validateUser}>
             <h1 id="txtBienvenida">Bienvenido a nuestro portal del Zodiaco</h1>
