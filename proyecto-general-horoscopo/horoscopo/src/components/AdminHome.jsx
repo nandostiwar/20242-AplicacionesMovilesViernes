@@ -9,12 +9,20 @@ function AdminHome({user}){
     const home = useNavigate();
     const [textoEditar, setTextoEditar] = useState("");
     const [signoEditar, setSignoEditar] = useState("");
+    const [opcionSeleccionada, setOpcionSeleccionada] = useState("");
 
-    function handleSelect(event){
+    function handleSelectSigno(event){
         const signo = event.target.value;
-        if(signo!=="0"){
+        if(signo !== "0"){
             setSignoEditar(signo);
         } 
+    }
+
+    function handleSelectOpcion(event) {
+        const opcion = event.target.value;
+        if(opcion !== "0"){
+            setOpcionSeleccionada(opcion);
+        }
     }
 
     function goHome(){
@@ -22,8 +30,6 @@ function AdminHome({user}){
     }
 
     function handleClick(e){
-        // console.log(signoEditar);
-        // console.log(textoEditar);
         e.preventDefault();
         fetch(`http://localhost:4000/v1/signos/${signoEditar}`, {
             method: 'PATCH',
@@ -33,10 +39,10 @@ function AdminHome({user}){
     }
 
     return (
-        <div class="container">
+        <div className="container">
             <h2 id="textoAdmin">Edita un Signo Zodiacal</h2>
-            <select id="editSignos" onClick={handleSelect}>
-                <option value="0">Seleciona un signo zodiacal</option>
+            <select id="editSignos" onChange={handleSelectSigno}>
+                <option value="0">Selecciona un signo zodiacal</option>
                 <option value="Aries">Aries</option>
                 <option value="Geminis">Géminis</option>
                 <option value="Cancer">Cáncer</option>
@@ -49,9 +55,20 @@ function AdminHome({user}){
                 <option value="Acuario">Acuario</option>
                 <option value="Piscis">Piscis</option>
             </select>
-            <textarea id="textoEditar" cols="50" rows="10" onChange={(e)=> setTextoEditar(e.target.value)}>
+            
+            <select id="editOpciones" onChange={handleSelectOpcion}>
+                <option value="0">Selecciona una opción</option>
+                <option value="hombre">Hombre</option>
+                <option value="mujer">Mujer</option>
+                <option value="niño">Niño</option>
+                <option value="niña">Niña</option>
+            </select>
 
+            {/* El textarea correspondiente para la edición */}
+            <textarea id="textoEditar" cols="50" rows="10" onChange={(e)=> setTextoEditar(e.target.value)}>
             </textarea>
+
+            {/* Botones después de las opciones */}
             <button id="btnEditar" onClick={handleClick}>Editar</button>
             <button id="btnHomeAdmin" onClick={goHome}>Home</button>
         </div>

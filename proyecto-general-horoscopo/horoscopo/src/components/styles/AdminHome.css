@@ -5,14 +5,27 @@
 }
 
 #editSignos{
-    margin-top: 0px;
-    margin: 100px;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    margin: 80px;
     width: 400px;
     padding: 5px 50px 5px 10px;
     border-radius: 10px;
     background-color: rgb(71, 63, 63);
     color: white;
 }
+
+#editOpciones{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin: 50px;
+    width: 400px;
+    padding: 5px 50px 5px 10px;
+    border-radius: 10px;
+    background-color: rgb(71, 63, 63);
+    color: white;
+}
+
 
 #btnEditar{
     margin-top: 10%;
