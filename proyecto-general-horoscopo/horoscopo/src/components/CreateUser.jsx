@@ -5,17 +5,23 @@ import { useNavigate } from 'react-router-dom';
 function CreateUser() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false); // Para mostrar u ocultar la contraseña
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     const handleCreateUser = async (event) => {
         event.preventDefault();
+        setErrorMessage('');
+        setSuccessMessage('');
+
         try {
             const response = await fetch('http://localhost:4000/v1/signos/createUser', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ username, password }), // Ya no enviamos el rol
             });
 
             if (!response.ok) {
@@ -25,14 +31,13 @@ function CreateUser() {
             const data = await response.json();
 
             if (data && data.success) {
-                alert('Usuario creado exitosamente');
-                navigate('/user-home'); // Redirige a la vista de usuario
+                setSuccessMessage('Usuario creado exitosamente');
             } else {
-                alert(data.message || 'Error en la creación de usuario');
+                setErrorMessage(data.message || 'Error en la creación de usuario');
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Error en la solicitud: ' + error.message);
+            setErrorMessage('Error en la solicitud: ' + error.message);
         }
     };
 
@@ -46,15 +51,30 @@ function CreateUser() {
                     placeholder="Nombre de Usuario"
                     onChange={(e) => setUsername(e.target.value)}
                 />
-                <input
-                    type="password"
-                    id="inputPassword"
-                    placeholder="Contraseña"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                <div className="password-container">
+                    <input
+                        type={showPassword ? "text" : "password"} // Mostrar contraseña si showPassword es true
+                        id="inputPassword"
+                        placeholder="Contraseña"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={showPassword}
+                            onChange={(e) => setShowPassword(e.target.checked)}
+                        />
+                        Mostrar contraseña
+                    </label>
+                </div>
+
                 <button type="submit" id="btnCrear">Crear Usuario</button>
                 <button type="button" id="btnHome" onClick={() => navigate('/')}>Volver a Inicio</button>
             </form>
+
+            {/* Mostrar mensajes de éxito o error */}
+            {successMessage && <p className="success-message">{successMessage}</p>}
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
     );
 }

@@ -69,13 +69,24 @@ const login = async (req, res) => {
 };
 const changePassword = async (req, res) => {
     const { username, oldPassword, newPassword } = req.body;
+
     try {
-        const credentialsPath = path.join(__dirname, '../../db/credentials.json');
-        const credentialsData = await fs.readFile(credentialsPath, 'utf-8');
-        const credentials = JSON.parse(credentialsData);
+        let credentialsPath = path.join(__dirname, '../../db/credentials.json');
+        let credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+        let credentials = JSON.parse(credentialsData);
+
+        // Busca primero en credentials.json
+        let user = credentials[username];
+
+        // Si no encuentra en credentials.json, busca en credentialsadmin.json
+        if (!user) {
+            credentialsPath = path.join(__dirname, '../../db/credentialsadmin.json');
+            credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+            credentials = JSON.parse(credentialsData);
+            user = credentials[username];
+        }
 
         // Verifica si el usuario existe y si la contraseña antigua es correcta
-        const user = credentials[username];
         if (user && user.password === oldPassword) {
             // Actualiza la contraseña
             user.password = newPassword;
@@ -93,10 +104,12 @@ const changePassword = async (req, res) => {
 const createUser = async (req, res) => {
     const { username, password } = req.body;
 
-    console.log('Received data:', { username, password }); // Añade este registro para verificar datos recibidos
+    console.log('Received data:', { username, password });
 
     try {
+        // Elimina la lógica de selección del archivo y usa siempre credentials.json
         const credentialsPath = path.join(__dirname, '../../db/credentials.json');
+
         const credentialsData = await fs.readFile(credentialsPath, 'utf-8');
         const credentials = JSON.parse(credentialsData);
 
@@ -104,7 +117,8 @@ const createUser = async (req, res) => {
             return res.status(400).json({ success: false, message: 'Usuario ya existe' });
         }
 
-        credentials[username] = { password, role: 'user' }; // Establece el rol como 'user'
+        // Guarda el usuario con contraseña, no hay necesidad de especificar roles
+        credentials[username] = { password };
         await fs.writeFile(credentialsPath, JSON.stringify(credentials, null, 2), 'utf-8');
         res.json({ success: true, message: 'Usuario creado exitosamente' });
     } catch (error) {
