@@ -20,12 +20,11 @@ function ChangePassword() {
         }
 
         try {
-            const response = await fetch('http://localhost:4000/v1/signos/change-password', {
+            const response = await fetch('http://localhost:4000/v1/signos/change-password', { // Asegúrate de que esta URL sea correcta
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                // No enviamos 'role', solo enviamos username, oldPassword y newPassword
                 body: JSON.stringify({ username, oldPassword, newPassword }),
             });
 

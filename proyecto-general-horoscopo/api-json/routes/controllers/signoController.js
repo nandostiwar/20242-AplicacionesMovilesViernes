@@ -69,52 +69,24 @@ const login = async (req, res) => {
 };
 const changePassword = async (req, res) => {
     const { username, oldPassword, newPassword } = req.body;
-
     try {
-        // Definir las rutas a los archivos de credenciales
-        const userCredentialsPath = path.join(__dirname, '../../db/credentials.json');
-        const adminCredentialsPath = path.join(__dirname, '../../db/credentialsadmin.json');
+        const credentialsPath = path.join(__dirname, '../../db/credentials.json');
+        const credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+        const credentials = JSON.parse(credentialsData);
 
-        // Leer y parsear ambos archivos
-        const userCredentialsData = await fs.readFile(userCredentialsPath, 'utf-8');
-        const adminCredentialsData = await fs.readFile(adminCredentialsPath, 'utf-8');
-
-        const userCredentials = JSON.parse(userCredentialsData);
-        const adminCredentials = JSON.parse(adminCredentialsData);
-
-        let user;
-        let credentialsPath;
-
-        // Verifica si el usuario es un usuario común o un administrador
-        if (userCredentials[username]) {
-            user = userCredentials[username];
-            credentialsPath = userCredentialsPath;
-        } else if (adminCredentials[username]) {
-            user = adminCredentials[username];
-            credentialsPath = adminCredentialsPath;
-        }
-
-        // Si el usuario no existe
-        if (!user) {
-            return res.status(400).json({ success: false, message: 'Nombre de usuario no encontrado' });
-        }
-
-        // Verificar la contraseña antigua
-        if (user.password === oldPassword) {
+        // Verifica si el usuario existe y si la contraseña antigua es correcta
+        const user = credentials[username];
+        if (user && user.password === oldPassword) {
             // Actualiza la contraseña
             user.password = newPassword;
-
-            // Guardar los cambios en el archivo correcto
-            const updatedCredentials = credentialsPath === userCredentialsPath ? userCredentials : adminCredentials;
-            await fs.writeFile(credentialsPath, JSON.stringify(updatedCredentials, null, 2), 'utf-8');
-
-            return res.json({ success: true, message: 'Contraseña cambiada exitosamente' });
+            await fs.writeFile(credentialsPath, JSON.stringify(credentials, null, 2), 'utf-8');
+            res.json({ success: true, message: 'Contraseña cambiada exitosamente' });
         } else {
-            return res.status(400).json({ success: false, message: 'Contraseña antigua incorrecta' });
+            res.status(400).json({ success: false, message: 'Nombre de usuario o contraseña antigua incorrectos' });
         }
     } catch (error) {
         console.error('Error:', error);
-        return res.status(500).json({ success: false, message: 'Error en el servidor' });
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
     }
 };
 
