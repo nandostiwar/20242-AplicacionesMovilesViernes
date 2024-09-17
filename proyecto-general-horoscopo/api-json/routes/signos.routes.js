@@ -5,7 +5,6 @@ router
     .get('/', signoController.getAllSignos)
     .get('/:signo', signoController.getOneSigno)
     .patch('/:signoEditar', signoController.updateSigno)
-    .post('/:signoEditar', signoController.getlogin)
     .post('/login', signoController.compareLogin)
-    
+
 module.exports = router;
