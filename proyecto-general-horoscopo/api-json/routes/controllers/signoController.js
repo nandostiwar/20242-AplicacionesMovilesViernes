@@ -34,19 +34,34 @@ const updateSigno = async (req, res)=>{
     })
 }
 
-const compareLogin = async (req, res)=>{
-    const {body} = req;
-    const {username, password} = body;
-    console.log("recibi user: " + username)
-    console.log("recibi pass: " + password)
+const compareLogin = async (req, res) => {
+    const { body } = req;
+    const { username, password } = body;
 
-    //leer el archivo de las crdenciales
-    //comparar si el user y pass que llego pertenece al admin o user
-    
-    res.json({
-        resultado: "user"
-    })
-}
+    try {
+        // Leer el archivo de credenciales
+        const filePath = path.resolve(__dirname, '../../db/credenciales.json');
+        const data = await fs.readFile(filePath, 'utf-8');
+        const credentials = JSON.parse(data);
+
+        // Buscar en las credenciales si hay una coincidencia
+        const user = credentials.find(c => c.userId === username && c.userPass === password);
+
+        if (user) {
+            res.json({
+                resultado: user.perfil
+            });
+        } else {
+            res.status(401).json({
+                resultado: "Credenciales incorrectas"
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            resultado: "Error en el servidor"
+        });
+    }
+};
 
 module.exports = {
     getAllSignos,

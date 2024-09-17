@@ -1,6 +1,12 @@
-{
-    "userId": "nando",
-    "userPass": "12345",
-    "perfil": "admin",
-    "IdPerfil": "1"
-}
+[
+    {
+        "userId": "admin",
+        "userPass": "12345",
+        "perfil": "admin"
+    },
+    {
+        "userId": "user",
+        "userPass": "12345",
+        "perfil": "user"
+    }
+]
