@@ -9,13 +9,23 @@ function Form({callback}){
  
     const validateUser = (event)=>{
         event.preventDefault();
-        if(username === 'user' && password === 'user2023'){
-            callback("user");
-            goTo("/userHome");
-        }else if(username === 'admin' && password==='admin2023'){
-            callback("admin");
-            goTo("/adminHome");
-        }
+        fetch('http://localhost:4000/v1/signos/login', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username, password})
+        })
+            .then(res =>res.json())
+            .then(responseData=>{
+                if(responseData.resultado=== 'user'){
+                    callback("user");
+                    goTo("/userHome");
+                }else if(responseData.resultado=== 'admin'){
+                    callback("admin");
+                    goTo("/adminHome");
+                }
+
+            })
+        
     }
     return (
         <form onSubmit={validateUser}>
