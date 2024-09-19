@@ -1,19 +1,19 @@
 {
   "Nino": {
-    "Aries": "Aries suerte de niña",
+    "Aries": "tcytcycy",
     "Geminis": "gemenis suerte de niña",
     "Cancer": "Suerte de Cancer",
     "Leo": "SUERTE DE LEO POSITIVA",
     "Virgo": "Suerte de Virgo",
     "Libra": "UNA LIBRA DE ARROZ",
     "Escorpio": "Suerte de Escorpio",
-    "Sagitario": "Suerte de Sagitario",
+    "Sagitario": "estoy validando si todo esta bien",
     "Capricornio": "Suerte de Capricornio",
     "Acuario": "Suerte de Acuario",
     "Piscis": "Suerte de Piscis"
   },
   "Nina": {
-    "Aries": "Suerte de Aries",
+    "Aries": "aries suerte de niña",
     "Geminis": "SUERTE DE GEMINIS CAMBIADA",
     "Cancer": "Suerte de Cancer",
     "Leo": "SUERTE DE LEO POSITIVA",
@@ -26,8 +26,8 @@
     "Piscis": "Suerte de Piscis"
   },
   "Hombre": {
-    "Aries": "Suerte de Aries",
-    "Geminis": "SUERTE DE GEMINIS CAMBIADA",
+    "Aries": "hoy aries hombre vas a ganar la materia",
+    "Geminis": "hoy geminis hombre vas a ganar la materia",
     "Cancer": "cancer suerte de hombre",
     "Leo": "SUERTE DE LEO POSITIVA",
     "Virgo": "Suerte de Virgo",
@@ -40,7 +40,7 @@
   },
   "Mujer": {
     "Aries": "Suerte de Aries",
-    "Geminis": "SUERTE DE GEMINIS CAMBIADA",
+    "Geminis": "hoy geminis mujer vas a ganar la materia",
     "Cancer": "Suerte de Cancer",
     "Leo": "SUERTE DE LEO POSITIVA",
     "Virgo": "Suerte de Virgo",

@@ -41,11 +41,11 @@ function AdminHome({user}){
 
     return (
         <div class="container">
-            <h2 id="textoAdmin">Seleccione Categoria</h2>
-            <select id="editSignos" onClick={SelecCategori}>
-                <option value="0">Selecione </option>
+            <h2 id="textoAdmin">Edite el signo</h2>
+            <select id="editCategorias" onClick={SelecCategori}>
+                <option value="0">Selecione categoria</option>
                 <option value="Nino">Niño</option>
-                <option value="Nino">Niña</option>
+                <option value="Nina">Niña</option>
                 <option value="Hombre">Hombre</option>
                 <option value="Mujer">Mujer</option>
             </select>

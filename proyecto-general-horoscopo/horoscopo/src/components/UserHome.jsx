@@ -12,7 +12,7 @@ function UserHome({user,enviarTexto}){
     if(user!=="user" || !user){
         return <Navigate to="/"/>
     }
-    const home = useNavigate(enviarTexto);
+    const home = useNavigate();
     const [textoSigno, setTextoSigno] = useState('');
     
 
@@ -34,6 +34,7 @@ function UserHome({user,enviarTexto}){
         }
         
         console.log(textoSigno);
+        console.log(enviarTexto);
         // setTextoSigno("")
 
             

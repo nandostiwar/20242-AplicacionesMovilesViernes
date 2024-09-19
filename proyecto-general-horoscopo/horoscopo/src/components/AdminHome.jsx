@@ -42,6 +42,7 @@ function AdminHome({user, setenviarTexto}){// cambio
         if (almacenarobj){
             
             setalmacnarArry([...almacnarArry, almacenarobj]);
+            
             console.log(almacnarArry)
         }
     }

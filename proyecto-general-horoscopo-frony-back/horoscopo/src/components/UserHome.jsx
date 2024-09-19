@@ -38,10 +38,10 @@ function UserHome({user}){
         <div className="container">
             <div id="txtSeleccionPage"><h3>Selecciona tu signo zodiacal</h3></div>
             <h2 id="textoAdmin">Seleccione Categoria</h2>
-            <select id="editSignos" onClick={SelecCategori}>
+            <select id="seleccionC" onClick={SelecCategori}>
                 <option value="0">Selecione </option>
                 <option value="Nino">Niño</option>
-                <option value="Nino">Niña</option>
+                <option value="Nina">Niña</option>
                 <option value="Hombre">Hombre</option>
                 <option value="Mujer">Mujer</option>
             </select>

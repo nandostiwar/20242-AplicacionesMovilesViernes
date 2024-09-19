@@ -2,8 +2,11 @@ import './App.css';
 import Form from './components/Form';
 import UserHome from './components/UserHome';
 import AdminHome from './components/AdminHome';
+import Registro from './components/Registro';
+import Restablecer from './components/Restablecer';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
 import { useState } from 'react';
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -14,6 +17,8 @@ function App() {
         <Route index element={<Form callback={setUser}/>}></Route>
         <Route path='/userHome' element={<UserHome user={user}/>}></Route>
         <Route path='/adminHome' element={<AdminHome user={user}/>}></Route>
+        <Route path='/registro' element={<Registro />}></Route>
+        <Route path='/retablecer' element={<Restablecer/>}></Route>
       </Routes>
     </BrowserRouter>
   )
