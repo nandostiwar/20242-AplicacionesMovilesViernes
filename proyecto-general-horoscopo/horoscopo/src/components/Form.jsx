@@ -115,8 +115,8 @@ function Form({callback}) {
                     /><br />
                     <h4 className="txt">Perfil</h4>
                     <select className="entry" onChange={(e) => setNewUserPerfil(e.target.value)}>
-                        <option value="user">ADMIN</option>
-                        <option value="admin">USER</option>
+                        <option value="user">USER</option>
+                        <option value="admin">ADMIN</option>
                     </select><br />
                     <button onClick={createNewUser}>Crear Usuario</button>
                 </div>
