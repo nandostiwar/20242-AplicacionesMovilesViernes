@@ -53,7 +53,7 @@ function FormCambioPass() {
                 required
             /><br />
             <input type="submit" value="Actualizar" id="btnEnviar" />
-            <button type="button" onClick={handleGoBack} id="btnEnviar" value="Volver" />
+            <input type="button" onClick={handleGoBack} id="btnEnviar" value="Volver" />
         </form>
     );
 }

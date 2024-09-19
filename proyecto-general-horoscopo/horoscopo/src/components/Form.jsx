@@ -31,13 +31,14 @@ function Form({callback}){
     };
     return (
         <form onSubmit={validateUser}>
-            <h1 id="txtBienvenida">Bienvenido a nuestro portal del Zodiaco</h1>
+            <h1 id="txtBienvenida">PORTAL DEL ZODIACO</h1>
             <h4 className="txt">Nombre de Usuario</h4>  
             <input type="text" className="entry" onChange={(e)=> setUsername(e.target.value)}/><br></br>
             <h4 className="txt">Contraseña</h4>  
             <input type="password" className="entry" onChange={(e)=> setPassword(e.target.value)}/><br></br>
             <input type="submit" value="Ingresar" id="btnEnviar"/>
-            <button type="button" onClick={cambioPass} id="btnEnviar" value="Cambiar Contraseña"/>
+            <input type="button" onClick={cambioPass} id="btnEnviar" value="Cambiar Contraseña"/>
+            
         </form>
     )
 }
