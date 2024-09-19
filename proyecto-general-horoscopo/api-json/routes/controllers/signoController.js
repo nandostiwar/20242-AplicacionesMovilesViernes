@@ -1,11 +1,12 @@
 const fs = require('fs/promises');
 const path = require('path');
 
-const getAllSignos = async (req, res)=>{
-    const signo = await fs.readFile(path.join(__dirname,'../../db/signos.json'));
-    const signosJson = JSON.parse(signo)
-    res.json(signosJson);
-}
+
+    async function getAllSignos(req, res) {
+        const signo = await fs.readFile(path.join(__dirname, '../../db/signos.json'));
+        const signosJson = JSON.parse(signo);
+        res.json(signosJson);
+    }
 
 const getOneSigno = async (req, res)=>{
     const oneSigno = req.params.signo;
@@ -34,23 +35,44 @@ const updateSigno = async (req, res)=>{
     })
 }
 
-const compareLogin = async (req, res)=>{
-    const {body} = req;
-    const {username, password} = body;
-    console.log("recibi user: " + username)
-    console.log("recibi pass: " + password)
+const compareLogin = async (req, res) => {
+    const { username, password } = req.body;
 
-    //leer el archivo de las crdenciales
-    //comparar si el user y pass que llego pertenece al admin o user
-    
-    res.json({
-        resultado: "user"
-    })
-}
+    console.log("recibi user: " + username);
+    console.log("recibi pass: " + password);
+
+    if (!username || !password) {
+        return res.status(400).json({ resultado: "Faltan credenciales" });
+    }
+
+    try {
+        const credencialesPath = path.join(__dirname, '../../db/credenciales.json');
+        const data = await fs.readFile(credencialesPath, 'utf8');
+        const credenciales = JSON.parse(data);
+
+        // Buscar si el usuario y la contraseña coinciden
+        let userType = null;
+        for (const [type, creds] of Object.entries(credenciales)) {
+            if (creds.username === username && creds.password === password) {
+                userType = type;
+                break;
+            }
+        }
+
+        if (userType) {
+            return res.json({ resultado: userType });
+        } else {
+            return res.status(401).json({ resultado: "Credenciales incorrectas" });
+        }
+    } catch (error) {
+        console.error("Error leyendo credenciales:", error);
+        return res.status(500).json({ resultado: "Error del servidor" });
+    }
+};
 
 module.exports = {
     getAllSignos,
     getOneSigno,
     updateSigno,
     compareLogin
-}
+};
