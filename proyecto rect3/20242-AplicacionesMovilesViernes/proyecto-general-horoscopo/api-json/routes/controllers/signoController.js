@@ -59,9 +59,49 @@ const compareLogin = async (req, res)=>{
     }
 }
 
+const updatepassword = async (req, res)=>{
+    const { body } = req;
+    const { username, password, update } = body;
+
+    console.log("Recibí user: " + username);
+    console.log("Recibí pass: " + password);
+    console.log("Nuevo pass: " + update);
+
+    try {
+        // Leer las credenciales
+        const data = await fs.readFile(path.join(__dirname, '../../db/credenciales.json'), 'utf-8');
+        const credentials = JSON.parse(data);
+
+        // Comparar las credenciales y actualizar el password
+        if (username === credentials.userId && password === credentials.userPass) {
+            // Actualizar la contraseña del usuario
+            credentials.userPass = update;
+            console.log("Contraseña de usuario actualizada");
+        } else if (username === credentials.adminId && password === credentials.adminPass) {
+            // Actualizar la contraseña del admin
+            credentials.adminPass = update;
+            console.log("Contraseña de admin actualizada");
+        } else {
+            // Credenciales inválidas
+            return res.json({ resultado: "Credenciales inválidas" });
+        }
+
+        // Guardar las credenciales actualizadas en el archivo JSON
+        await fs.writeFile(path.join(__dirname, '../../db/credenciales.json'), JSON.stringify(credentials, null, 2), 'utf-8');
+
+        // Respuesta exitosa
+        return res.json({ resultado: "Contraseña actualizada correctamente" });
+
+    } catch (error) {
+        console.error("Error leyendo o escribiendo el archivo de credenciales:", error);
+        return res.status(500).json({ resultado: "Error interno del servidor" });
+    }
+}
+
 module.exports = {
     getAllSignos,
     getOneSigno,
     updateSigno,
-    compareLogin
+    compareLogin,
+    updatepassword,
 }
