@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function Form({ callback }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState(''); // Impide el envio del formulario con los campos vacios
     const goTo = useNavigate();
 
     const validateUser = async (event) => {
@@ -42,6 +42,12 @@ function Form({ callback }) {
             console.error("Error en la solicitud:", error);
         }
     };
+    
+    // Redirige a la página de actualización de datos
+    const Update = (event) => {
+        event.preventDefault();
+        goTo("/UpdateData"); 
+    };
 
     return (
         <form onSubmit={validateUser}>
@@ -62,6 +68,7 @@ function Form({ callback }) {
                 value={password}
             /><br />
             <input type="submit" value="Ingresar" id="btnEnviar" />
+            <button onClick={Update} id="btnUpdate">Actualizar Datos</button> {/* Botón de Actualizar */}
         </form>
     );
 }

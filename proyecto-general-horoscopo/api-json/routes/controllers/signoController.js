@@ -1,12 +1,11 @@
 const fs = require('fs/promises');
 const path = require('path');
 
-
-    async function getAllSignos(req, res) {
-        const signo = await fs.readFile(path.join(__dirname, '../../db/signos.json'));
-        const signosJson = JSON.parse(signo);
-        res.json(signosJson);
-    }
+const getAllSignos = async (req, res)=>{
+    const signo = await fs.readFile(path.join(__dirname,'../../db/signos.json'));
+    const signosJson = JSON.parse(signo)
+    res.json(signosJson);
+}
 
 const getOneSigno = async (req, res)=>{
     const oneSigno = req.params.signo;
@@ -68,11 +67,26 @@ const compareLogin = async (req, res) => {
         console.error("Error leyendo credenciales:", error);
         return res.status(500).json({ resultado: "Error del servidor" });
     }
+}
+
+// Actualizacion de Datos 
+
+    const UpdateData = async (req, res)=>{
+        const datosEditar = req.params.datosEditar;
+        const {textoEditar} = req.body;
+        const allSignos = await fs.readFile(path.join(__dirname,'../../db/credenciales.json'));
+        const objSignos = JSON.parse(allSignos);
+    
+        const objUpdate = {
+            ...objSignos,
+            [signoEditar]: textoEditar
+        }
 };
 
 module.exports = {
     getAllSignos,
     getOneSigno,
     updateSigno,
-    compareLogin
+    compareLogin,
+    UpdateData
 };
