@@ -38,6 +38,7 @@ function Form({callback}){
 
             {/* Enlace para 'Olvidé mi contraseña' */}
             <a href="" onClick={() => goTo("/cambiarP")} id="forgotPasswordLink">cambiar contrasena</a>
+            <a href="" onClick={() => goTo("/crearusers")} id="forgotPasswordLink">agregar usuarios</a>
             
         </form>   
     )

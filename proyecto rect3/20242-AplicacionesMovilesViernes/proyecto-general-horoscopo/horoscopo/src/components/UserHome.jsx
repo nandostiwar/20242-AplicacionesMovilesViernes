@@ -28,27 +28,51 @@ function UserHome({user}){
             <div id="txtSeleccionPage"><h3>Selecciona tu signo zodiacal</h3></div>
             <div>
                 <select id="selectSignos" onClick={handleSelect}>
-                    <option value="0">Seleciona un signo zodiacal</option>
-                    <option value="Aries">Aries</option>
+                    <option value="0">Signo hombre</option>
+                    <option value="Arieshombre">Aries</option>
                     <option value="Geminishombre">Géminis</option>
-                    <option value="Cancer">Cáncer</option>
-                    <option value="Leo">Leo</option>
-                    <option value="Virgo">Virgo</option>
-                    <option value="Libra">Libra</option>
-                    <option value="Escorpio">Escorpio</option>
-                    <option value="Sagitario">Sagitario</option>
-                    <option value="Capricornio">Capricornio</option>
-                    <option value="Acuario">Acuario</option>
-                    <option value="Piscis">Piscis</option>
+                    <option value="Cancerhombre">Cáncer</option>
+                    <option value="Leohombre">Leo</option>
+                    <option value="Virgohombre">Virgo</option>
+                    <option value="Librahombre">Libra</option>
+                    <option value="Escorpiohombre">Escorpio</option>
+                    <option value="Sagitariohombre">Sagitario</option>
+                    <option value="Capricorniohombre">Capricornio</option>
+                    <option value="Acuariohombre">Acuario</option>
+                    <option value="Piscishombre">Piscis</option>
                 </select>
-                <select id="editSignos" onClick={handleSelect}>
-                        <option value="0">Seleciona un genero</option>
-                        <option value="hombre">hombre</option>
-                        <option value="mujer">mujer</option>
-                        <option value="nino">39 tipos de gay</option>
-                        
+               
+                
+                <select id="selectSignos" onClick={handleSelect}>
+                    <option value="0">Signo mujer</option>
+                    <option value="Ariesmujer">Aries</option>
+                    <option value="Geminismujer">Géminis</option>
+                    <option value="Cancermujer">Cáncer</option>
+                    <option value="Leomujer">Leo</option>
+                    <option value="Virgomujer">Virgo</option>
+                    <option value="Libramujer">Libra</option>
+                    <option value="Escorpiomujer">Escorpio</option>
+                    <option value="Sagitariomujer">Sagitario</option>
+                    <option value="Capricorniomujer">Capricornio</option>
+                    <option value="Acuariomujer">Acuario</option>
+                    <option value="Piscismujer">Piscis</option>
                 </select>
 
+                <select id="selectSignos" onClick={handleSelect}>
+                    <option value="0">Signo nino</option>
+                    <option value="Ariesnino">Aries</option>
+                    <option value="Geminisnino">Géminis</option>
+                    <option value="Cancernino">Cáncer</option>
+                    <option value="Leonino">Leo</option>
+                    <option value="Virgonino">Virgo</option>
+                    <option value="Libranino">Libra</option>
+                    <option value="Escorpionino">Escorpio</option>
+                    <option value="Sagitarionino">Sagitario</option>
+                    <option value="Capricornionino">Capricornio</option>
+                    <option value="Acuarionino">Acuario</option>
+                    <option value="Piscisnino">Piscis</option>
+                </select>
+              
             </div>
             
 
