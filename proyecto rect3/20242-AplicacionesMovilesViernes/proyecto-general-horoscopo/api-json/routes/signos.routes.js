@@ -7,5 +7,6 @@ router
     .patch('/:signoEditar', signoController.updateSigno)
     .post('/login',signoController.compareLogin)
     .post('/actualizar', signoController.updatepassword)
+    .post('/crear', signoController.crearuser)
 
 module.exports = router;
