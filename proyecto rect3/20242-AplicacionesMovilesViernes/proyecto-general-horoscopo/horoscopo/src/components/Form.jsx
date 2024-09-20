@@ -35,8 +35,16 @@ function Form({callback}){
             <h4 className="txt">Contraseña</h4>  
             <input type="password" className="entry" onChange={(e)=> setPassword(e.target.value)}/><br></br>
             <input type="submit" value="Ingresar" id="btnEnviar"/>
-        </form>
+
+            {/* Enlace para 'Olvidé mi contraseña' */}
+            <a href="" onClick={() => goTo("/cambiarP")} id="forgotPasswordLink">cambiar contrasena</a>
+            
+        </form>   
     )
+
+    
 }
+
+
 
 export default Form;
