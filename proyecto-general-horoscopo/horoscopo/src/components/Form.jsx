@@ -13,10 +13,10 @@ function Form({ callback }) {
         event.preventDefault();
 
         // Validar si los campos están vacíos
-        /*if (!username || !password) {
+        if (!username || !password) {
             setErrorMessage('Por favor, complete todos los campos.');
             return;  // No continúa si los campos están vacíos
-        }*/
+        }
 
         // Si los campos están llenos, realizar la solicitud
         try {

@@ -43,9 +43,10 @@ function DataHome ({ callback }) {
         }
     };
 
-    function goHome(){
-        home("/goHome");
-    }
+    const goHome = (event) => {
+        event.preventDefault();
+        goTo("/"); 
+    };
 
     const updateUserData = async (event) => {
         event.preventDefault();
