@@ -42,127 +42,134 @@ const compareLogin = async (req, res) => {
     console.log("Recibí pass: " + password);
 
     try {
-        // Leer las credenciales
-        const data = await fs.readFile(path.join(__dirname, '../../db/credenciales.json'), 'utf-8');
-        const credentials = JSON.parse(data);
+        
+        const adminData = await fs.readFile(path.join(__dirname, '../../db/admin.json'), 'utf-8');
+        const adminCredentials = JSON.parse(adminData);
 
-        // Verificar si el username y password coinciden con los del admin
-        if (username === credentials.adminId && password === credentials.adminPass) {
+        if (username === adminCredentials.adminId && password === adminCredentials.adminPass) {
             return res.json({ resultado: "admin" });
         }
 
-        // Verificar si el username y password coinciden con los del usuario estático
-        if (username === credentials.userId && password === credentials.userPass) {
-            return res.json({ resultado: "user" });
-        }
+        const usersData = await fs.readFile(path.join(__dirname, '../../db/users.json'), 'utf-8');
+        const usersCredentials = JSON.parse(usersData);
 
-        // Verificar en la lista de usuarios
-        const user = credentials.users.find(u => u.username === username && u.password === password);
-
+        const user = usersCredentials.users.find(u => u.username === username && u.password === password);
         if (user) {
             return res.json({ resultado: "user" });
         }
-
-        // Si no se encontró el usuario o la contraseña no coinciden
         return res.json({ resultado: "Credenciales inválidas" });
-
     } catch (error) {
-        console.error("Error leyendo el archivo de credenciales:", error);
+        console.error("Error leyendo los archivos de credenciales:", error);
         return res.status(500).json({ resultado: "Error interno del servidor" });
     }
 };
 
 
 const updatepassword = async (req, res) => {
-    const { body } = req;
-    const { username, password, update } = body;
+    const { username, password, update } = req.body;
 
     console.log("Recibí user: " + username);
     console.log("Recibí pass: " + password);
     console.log("Nuevo pass: " + update);
 
     try {
-        // Leer las credenciales
-        const data = await fs.readFile(path.join(__dirname, '../../db/credenciales.json'), 'utf-8');
-        const credentials = JSON.parse(data);
+        
+        const usersData = await fs.readFile(path.join(__dirname, '../../db/users.json'), 'utf-8');
+        const users = JSON.parse(usersData).users;
 
-        // Actualizar la contraseña del admin si coincide
-        if (username === credentials.adminId && password === credentials.adminPass) {
-            credentials.adminPass = update;
-            console.log("Contraseña de admin actualizada");
-        }
-        // Actualizar la contraseña del usuario estático
-        else if (username === credentials.userId && password === credentials.userPass) {
-            credentials.userPass = update;
-            console.log("Contraseña de usuario estático actualizada");
-        }
-        // Buscar al usuario en la lista de usuarios
-        else {
-            const userIndex = credentials.users.findIndex(u => u.username === username && u.password === password);
+        
+        const userIndex = users.findIndex(user => user.username === username && user.password === password);
 
-            if (userIndex !== -1) {
-                credentials.users[userIndex].password = update;
-                console.log("Contraseña del usuario actualizada");
-            } else {
-                // Credenciales inválidas
-                return res.json({ resultado: "Credenciales inválidas" });
-            }
+        if (userIndex !== -1) {
+           
+            users[userIndex].password = update;
+
+            await fs.writeFile(path.join(__dirname, '../../db/users.json'), JSON.stringify({ users }, null, 2), 'utf-8');
+
+            return res.json({ resultado: "Contraseña de usuario actualizada correctamente" });
         }
 
-        // Guardar las credenciales actualizadas en el archivo JSON
-        await fs.writeFile(path.join(__dirname, '../../db/credenciales.json'), JSON.stringify(credentials, null, 2), 'utf-8');
+        
+        const adminData = await fs.readFile(path.join(__dirname, '../../db/admin.json'), 'utf-8');
+        const admins = JSON.parse(adminData).admins;
 
-        // Respuesta exitosa
-        return res.json({ resultado: "Contraseña actualizada correctamente" });
+        
+        const adminIndex = admins.findIndex(admin => admin.adminId === username && admin.adminPass === password);
+
+        if (adminIndex !== -1) {
+            
+            admins[adminIndex].adminPass = update;
+
+            
+            await fs.writeFile(path.join(__dirname, '../../db/admin.json'), JSON.stringify({ admins }, null, 2), 'utf-8');
+
+            return res.json({ resultado: "Contraseña de administrador actualizada correctamente" });
+        }
+
+        
+        return res.json({ resultado: "Credenciales inválidas" });
 
     } catch (error) {
-        console.error("Error leyendo o escribiendo el archivo de credenciales:", error);
+        console.error("Error leyendo o escribiendo los archivos:", error);
         return res.status(500).json({ resultado: "Error interno del servidor" });
     }
 };
+
+
 
 
 const crearuser = async (req, res) => {
-    const { body } = req;
-    const { username, password } = body;
+    const { username, password, role } = req.body;
 
     console.log("Recibí user: " + username);
     console.log("Recibí pass: " + password);
+    console.log("Rol: " + role);
 
     try {
-        // Leer las credenciales actuales
-        const data = await fs.readFile(path.join(__dirname, '../../db/credenciales.json'), 'utf-8');
-        const credentials = JSON.parse(data);
+        if (role === "admin") {
+            
+            const data = await fs.readFile(path.join(__dirname, '../../db/admin.json'), 'utf-8');
+            const adminData = JSON.parse(data);
 
-        // Verificar si el usuario ya existe
-        if (username === credentials.userId || username === credentials.adminId) {
-            return res.json({ resultado: "El usuario ya existe" });
+           
+            const adminExists = adminData.admins.some(admin => admin.adminId === username);
+            if (adminExists) {
+                return res.json({ resultado: "El admin ya existe" });
+            }
+
+            
+            adminData.admins.push({ adminId: username, adminPass: password });
+
+            
+            await fs.writeFile(path.join(__dirname, '../../db/admin.json'), JSON.stringify(adminData, null, 2), 'utf-8');
+            return res.json({ resultado: "Admin creado correctamente" });
+        } else if (role === "user") {
+           
+            const data = await fs.readFile(path.join(__dirname, '../../db/users.json'), 'utf-8');
+            const usersData = JSON.parse(data);
+
+           
+            const userExists = usersData.users.some(user => user.username === username);
+            if (userExists) {
+                return res.json({ resultado: "El usuario ya existe" });
+            }
+
+            
+            usersData.users.push({ username, password });
+
+           
+            await fs.writeFile(path.join(__dirname, '../../db/users.json'), JSON.stringify(usersData, null, 2), 'utf-8');
+            return res.json({ resultado: "Usuario creado correctamente" });
+        } else {
+            return res.json({ resultado: "Rol inválido" });
         }
-
-        // Crear un nuevo usuario (puedes modificar para múltiples usuarios, si es necesario)
-        if (!credentials.users) {
-            credentials.users = [];  // Crear el array si no existe
-        }
-
-        // Agregar el nuevo usuario al array de usuarios
-        credentials.users.push({
-            username: username,
-            password: password
-        });
-
-        console.log("Nuevo usuario creado:", { username, password });
-
-        // Guardar las credenciales actualizadas en el archivo JSON
-        await fs.writeFile(path.join(__dirname, '../../db/credenciales.json'), JSON.stringify(credentials, null, 2), 'utf-8');
-
-        // Respuesta exitosa
-        return res.json({ resultado: "Usuario creado correctamente" });
 
     } catch (error) {
         console.error("Error leyendo o escribiendo el archivo de credenciales:", error);
         return res.status(500).json({ resultado: "Error interno del servidor" });
     }
 };
+
 
 
 module.exports = {
