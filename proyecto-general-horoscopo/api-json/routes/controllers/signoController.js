@@ -34,6 +34,13 @@ const updateSigno = async (req, res)=>{
     })
 }
 
+///////////////////////////////////////////////  APARTADO DE USUARIOS    ////////////////////////////////////////////////////////////////
+
+const getAlluser = async (req, res)=>{
+    const credenciales = await fs.readFile(path.join(__dirname,'../../db/credenciales.json'));
+    const credencialesJson = JSON.parse(credenciales)
+    res.json(credencialesJson);
+}
 
 
 const compareLogin = async (req, res) => {
@@ -74,9 +81,9 @@ const compareLogin = async (req, res) => {
 
 const updateUser = async (req, res)=>{
     const userEditar = req.params.userEditar;
-    const {textoEditar} = req.body;
-    const allSignos = await fs.readFile(path.join(__dirname,'../../db/credenciales.json'));
-    const objSignos = JSON.parse(allSignos);
+    const { username, password } = req.body;
+    const update = await fs.readFile(path.join(__dirname,'../../db/credenciales.json'));
+    const objSignos = JSON.parse(update);
 
     const objUpdate = {
         ...objSignos,
@@ -97,6 +104,7 @@ module.exports = {
     getOneSigno,
     updateSigno,
     compareLogin,
-    updateUser
+    updateUser,
+    getAlluser
     //newUser
 };

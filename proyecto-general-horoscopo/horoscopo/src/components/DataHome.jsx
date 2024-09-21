@@ -1,6 +1,6 @@
 import './styles/UpdateData.css';
-import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function DataHome ({ callback }) {
     const [username, setUsername] = useState('');
@@ -115,7 +115,7 @@ function DataHome ({ callback }) {
             /><br />     
             <br />
 
-            <button onClick={updateUser} id="btnUpdate">Actualizar Datos</button>
+            <button onClick={updateUserData} id="btnUpdate">Actualizar Datos</button>
             <button onClick={goHome} id="btnUpdate">Home</button>
         </form>
     );
