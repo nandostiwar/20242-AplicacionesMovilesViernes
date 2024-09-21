@@ -14,7 +14,7 @@ function App() {
       {/* <Navigation/> */}
       <Routes>
         <Route index element={<Form callback={setUser}/>}></Route>
-        <Route path='/cambiarP' element={<ChangePassword/>}></Route>
+        <Route path='/Updatepass' element={<ChangePassword/>}></Route>
         <Route path='/crearusers' element={<ChangePasswords/>}></Route>
         <Route path='/userHome' element={<UserHome user={user}/>}></Route>
         <Route path='/adminHome' element={<AdminHome user={user}/>}></Route>
@@ -23,17 +23,5 @@ function App() {
   )
 }
 
-// function Navigation(){
-//   return <nav>
-//     <ul>
-//       <li>
-//         <Link to="/userHome">userHome</Link>
-//       </li>
-//       <li>
-//         <Link to="/adminHome">adminHome</Link>
-//       </li>
-//     </ul>
-//   </nav>
-// }
 
 export default App

@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import './styles/Updatepass.css'
 
 function ChangePassword() {
-    const [username, setUsername] = useState("");  // Inicializado como string vacía
-    const [password, setPassword] = useState("");  // Inicializado como string vacía
-    const [update, setUpdate] = useState("");      // Inicializado como string vacía
+    const [username, setUsername] = useState("");  
+    const [password, setPassword] = useState("");  
+    const [update, setUpdate] = useState("");     
 
     const goTo = useNavigate();
 
@@ -25,7 +25,7 @@ function ChangePassword() {
             .then(responseData => {
                 if (responseData.resultado === 'Contraseña actualizada correctamente') {
                     alert("Contraseña actualizada correctamente");
-                    goTo("/Form");  // Redirigir a la página de inicio de sesión
+                    goTo("/Form");  // Redirigir
                 } else if (responseData.resultado === 'Credenciales inválidas') {
                     alert("Credenciales inválidas");
                 }
