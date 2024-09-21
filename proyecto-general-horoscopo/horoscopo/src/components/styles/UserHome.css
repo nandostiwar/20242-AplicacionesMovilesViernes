@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    background-color: #f9f9f9; /* Fondo claro */
+}
+
+#selectSignos {
+    width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #4b3c01; /* Color uniforme */
+    color: white;
+    border: none; /* Eliminar borde */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    font-size: 16px; /* Tamaño de fuente legible */
+    transition: background-color 0.3s; /* Efecto de transición */
+}
+
+#selectSignos:hover {
+    background-color: #3c2c01; /* Color al pasar el cursor */
+}
+
+#txtSeleccionPage {
+    padding: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+    color: #4b3c01; /* Color más uniforme */
+}
+
+#btnHome {
+    margin-top: 20px; /* Reduce el margen superior */
+    background-color: blue;
+    color: white;
+    padding: 10px 20px; /* Padding más equilibrado */
+    border-radius: 10px;
+    border: none; /* Eliminar borde */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    transition: background-color 0.3s; /* Efecto de transición */
+}
+
+#btnHome:hover {
+    background-color: darkblue; /* Color al pasar el cursor */
+}
