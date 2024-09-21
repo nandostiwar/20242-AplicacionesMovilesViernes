@@ -1,6 +1,10 @@
 {
-    "userId": "nando",
-    "userPass": "12345",
-    "adminId": "jorge",
-    "adminPass": "xyzw"
+  "user": {
+    "username": "oscarm",
+    "password": "1234"
+  },
+  "admin": {
+    "username": "admin",
+    "password": "admin"
+  }
 }

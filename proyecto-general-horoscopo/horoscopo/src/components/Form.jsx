@@ -2,6 +2,8 @@ import './styles/Form.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
+
 function Form({ callback }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -14,7 +16,7 @@ function Form({ callback }) {
         // Validar si los campos están vacíos
         if (!username || !password) {
             setErrorMessage('Por favor, complete todos los campos.');
-            return;  // No continúa si los campos están vacíos
+            return;  
         }
 
         // Si los campos están llenos, realizar la solicitud
@@ -43,8 +45,47 @@ function Form({ callback }) {
         }
     };
 
+    //actualizar User
+    const registerUser = async (event) => {
+        event.preventDefault();
+
+        // Validar si los campos están vacíos
+        if (!username || !password) {
+            setErrorMessage('Por favor, complete todos los campos.');
+            return;  // No continúa si los campos están vacíos
+        }
+
+        // Si los campos están llenos, realizar la solicitud
+        try {
+            const response = await fetch(`http://localhost:4000/v1/signos/Update`, {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+
+            if (data.resultado === 'success') {
+                setErrorMessage('Error al actualizar usuario');
+            } else {
+                setErrorMessage('Registro exitoso. Ahora puede iniciar sesión.');
+            }
+        } catch (error) {
+            setErrorMessage('Error al conectar con el servidor.');
+            console.error("Error en la solicitud:", error);
+        }
+    };
+
+    
+    const NewUser = (event) => {
+            event.preventDefault();
+            goTo("/Registro"); 
+        };
+
+
+
     return (
-        <form onSubmit={validateUser}>
+        <form>
             <h1 id="txtBienvenida">Bienvenido a nuestro portal del Zodiaco</h1>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             <h4 className="txt">Nombre de Usuario</h4>
@@ -61,9 +102,18 @@ function Form({ callback }) {
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
             /><br />
-            <input type="submit" value="Ingresar" id="btnEnviar" />
+            <button onClick={validateUser} id="btnIngresar">Ingresar</button>
+            <button onClick={registerUser} id="btnActualizar">Actualizar</button>
+            <button type="button" onClick={NewUser}>Registro</button>
+            
+           
+            
+            
+
+
         </form>
     );
 }
+
 
 export default Form;
