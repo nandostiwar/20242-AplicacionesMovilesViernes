@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "../styles/Calculadora.css";
 import Resultado from "./Resultado";
@@ -11,46 +10,18 @@ function Calculadora() {
   function handleSubmit(e) {
     e.preventDefault();
     const operacion = e.target.value;
-    if (operacion == "restar") {
-      fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ number1, number2 }),
-      })
-        .then((res) => res.json())
-        .then((responseData) => {
-          setResultado(responseData.resultado);
-          // setResultado(responseData)
-          console.log(resultado);
-        });
-    }
-    if (operacion == "sumar") {
-      fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ number1, number2 }),
-      })
-        .then((res) => res.json())
-        .then((responseData) => {
-          setResultado(responseData.resultado);
-          // setResultado(responseData)
-          console.log(resultado);
-        });
-    }
 
-    if (operacion == "multiplicar") {
-      fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ number1, number2 }),
+    fetch(`http://localhost:3500/v1/calculadora/${operacion}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ number1, number2 }),
+    })
+      .then((res) => res.json())
+      .then((responseData) => {
+        setResultado(responseData.resultado);
+        console.log(responseData.resultado);
       })
-        .then((res) => res.json())
-        .then((responseData) => {
-          setResultado(responseData.resultado);
-          // setResultado(responseData)
-          console.log(resultado);
-        });
-    }
+      .catch((error) => console.error("Error:", error));
   }
 
   return (
@@ -60,17 +31,17 @@ function Calculadora() {
         <input
           type="text"
           className="number"
-          onChange={(e) => {
-            setNumber1(e.target.value);
-          }}
+          placeholder="Número 1"
+          value={number1}
+          onChange={(e) => setNumber1(e.target.value)}
         />
         <br />
         <input
           type="text"
           className="number"
-          onChange={(e) => {
-            setNumber2(e.target.value);
-          }}
+          placeholder="Número 2"
+          value={number2}
+          onChange={(e) => setNumber2(e.target.value)}
         />
         <br />
         <input
@@ -91,10 +62,28 @@ function Calculadora() {
           value="multiplicar"
           onClick={handleSubmit}
         />
+        <input
+          type="submit"
+          className="btnEnviar"
+          value="mayorque"
+          onClick={handleSubmit}
+        />
+        <input
+          type="submit"
+          className="btnEnviar"
+          value="menorque"
+          onClick={handleSubmit}
+        />
+        <input
+          type="submit"
+          className="btnEnviar"
+          value="promedio"
+          onClick={handleSubmit}
+        />
       </form>
-      <Resultado resultado={"El resultado es " + resultado} />
+      <Resultado resultado={`El resultado es ${resultado}`} />
     </div>
-  );
+  )
 }
 
 export default Calculadora;
