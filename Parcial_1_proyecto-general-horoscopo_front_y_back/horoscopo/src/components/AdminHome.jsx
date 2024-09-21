@@ -9,11 +9,18 @@ function AdminHome({user}){
     const home = useNavigate();
     const [textoEditar, setTextoEditar] = useState("");
     const [signoEditar, setSignoEditar] = useState("");
+    const [categoria, setcategoria] = useState("");
 
     function handleSelect(event){
         const signo = event.target.value;
         if(signo!=="0"){
             setSignoEditar(signo);
+        } 
+    }
+    function SelecCategori(event){
+        const Categoria = event.target.value;
+        if(Categoria!=="0"){
+            setcategoria(Categoria);
         } 
     }
 
@@ -25,7 +32,7 @@ function AdminHome({user}){
         // console.log(signoEditar);
         // console.log(textoEditar);
         e.preventDefault();
-        fetch(`http://localhost:4000/v1/signos/${signoEditar}`, {
+        fetch(`http://localhost:4000/v1/signos/${categoria}/${signoEditar}`, {
             method: 'PATCH',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({"textoEditar": textoEditar})
@@ -34,11 +41,17 @@ function AdminHome({user}){
 
     return (
         <div class="container">
-            <h2 id="textoAdmin">Edita un Signo Zodiacal</h2>
+            <h2 id="textoAdmin">Edite el signo</h2>
+            <select id="editCategorias" onClick={SelecCategori}>
+                <option value="0">Selecione categoria</option>
+                <option value="Nino">Niño</option>
+                <option value="Nina">Niña</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+            </select>
             <select id="editSignos" onClick={handleSelect}>
                 <option value="0">Seleciona un signo zodiacal</option>
                 <option value="Aries">Aries</option>
-                <option value="Tauro">Tauro</option>
                 <option value="Geminis">Géminis</option>
                 <option value="Cancer">Cáncer</option>
                 <option value="Leo">Leo</option>
@@ -49,12 +62,6 @@ function AdminHome({user}){
                 <option value="Capricornio">Capricornio</option>
                 <option value="Acuario">Acuario</option>
                 <option value="Piscis">Piscis</option>
-            </select>
-            <select id="editPerson" onClick={handleSelect}>
-                <option value="P">Seleciona un tipo de persona</option>
-                <option value="Hombre">Hombre</option>
-                <option value="Mujer">Mujer</option>
-                <option value="nino">Niño</option>
             </select>
             <textarea id="textoEditar" cols="50" rows="10" onChange={(e)=> setTextoEditar(e.target.value)}>
 

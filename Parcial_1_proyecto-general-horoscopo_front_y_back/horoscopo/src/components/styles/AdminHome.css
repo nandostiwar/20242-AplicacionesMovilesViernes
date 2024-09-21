@@ -1,3 +1,7 @@
+body{
+    background-color: lightskyblue;
+}
+
 .container{
     height: 300px;
     display: grid;
@@ -5,18 +9,17 @@
 }
 
 #editSignos{
-    margin-top: 0px;
     margin: 100px;
+    margin-top: 0px;
     width: 400px;
     padding: 5px 50px 5px 10px;
     border-radius: 10px;
     background-color: rgb(71, 63, 63);
     color: white;
 }
-
-#editPerson{
+#editCategorias{
     margin-top: 0px;
-    margin: 100px;
+    margin: 10px;
     width: 400px;
     padding: 5px 50px 5px 10px;
     border-radius: 10px;
@@ -30,7 +33,7 @@
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 10px;
-    background-color: brown;
+    background-color: lightsteelblue;
     color: white;
 }
 
@@ -51,6 +54,6 @@
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 10px;
-    background-color: blue;
+    background-color: lightsteelblue;
     color: white
 }

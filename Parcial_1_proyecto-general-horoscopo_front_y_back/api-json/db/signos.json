@@ -1,0 +1,54 @@
+{
+  "Nino": {
+    "Aries": "tcytcycy",
+    "Geminis": "gemenis suerte de niña",
+    "Cancer": "Suerte de Cancer",
+    "Leo": "SUERTE DE LEO POSITIVA",
+    "Virgo": "Suerte de Virgo",
+    "Libra": "UNA LIBRA DE ARROZ",
+    "Escorpio": "Suerte de Escorpio",
+    "Sagitario": "estoy validando si todo esta bien",
+    "Capricornio": "Suerte de Capricornio",
+    "Acuario": "Suerte de Acuario",
+    "Piscis": "Suerte de Piscis"
+  },
+  "Nina": {
+    "Aries": "aries suerte de niña",
+    "Geminis": "SUERTE DE GEMINIS CAMBIADA",
+    "Cancer": "Suerte de Cancer",
+    "Leo": "SUERTE DE LEO POSITIVA",
+    "Virgo": "Suerte de Virgo",
+    "Libra": "UNA LIBRA DE ARROZ",
+    "Escorpio": "Suerte de Escorpio",
+    "Sagitario": "Suerte de Sagitario",
+    "Capricornio": "Suerte de Capricornio",
+    "Acuario": "Suerte de Acuario",
+    "Piscis": "Suerte de Piscis"
+  },
+  "Hombre": {
+    "Aries": "Mañana no salgas, te espera algo terrible en un centro comercial, Cuidado!",
+    "Geminis": "hoy geminis hombre vas a ganar la materia",
+    "Cancer": "cancer suerte de hombre",
+    "Leo": "SUERTE DE LEO POSITIVA",
+    "Virgo": "Suerte de Virgo",
+    "Libra": "UNA LIBRA DE ARROZ",
+    "Escorpio": "Suerte de Escorpio",
+    "Sagitario": "Suerte de Sagitario",
+    "Capricornio": "Suerte de Capricornio",
+    "Acuario": "Suerte de Acuario",
+    "Piscis": "Suerte de Piscis"
+  },
+  "Mujer": {
+    "Aries": "Suerte de Aries",
+    "Geminis": "hoy geminis mujer vas a ganar la materia",
+    "Cancer": "Mañana veras algo sobre la luna",
+    "Leo": "SUERTE DE LEO POSITIVA",
+    "Virgo": "Suerte de Virgo",
+    "Libra": "UNA LIBRA DE ARROZ",
+    "Escorpio": "Suerte de Escorpio",
+    "Sagitario": "Suerte de Sagitario",
+    "Capricornio": "Suerte de Capricornio",
+    "Acuario": "Suerte de Acuario",
+    "Piscis": "Suerte de Piscis"
+  }
+}

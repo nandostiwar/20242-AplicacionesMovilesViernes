@@ -14,16 +14,6 @@
     color: white;
 }
 
-#editPerson{
-    margin-top: 0px;
-    margin: 100px;
-    width: 400px;
-    padding: 5px 50px 5px 10px;
-    border-radius: 10px;
-    background-color: rgb(71, 63, 63);
-    color: white;
-}
-
 #btnEditar{
     margin-top: 10%;
     padding: 10px;

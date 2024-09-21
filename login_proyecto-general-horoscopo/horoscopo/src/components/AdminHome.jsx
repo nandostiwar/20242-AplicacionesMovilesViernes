@@ -38,7 +38,6 @@ function AdminHome({user}){
             <select id="editSignos" onClick={handleSelect}>
                 <option value="0">Seleciona un signo zodiacal</option>
                 <option value="Aries">Aries</option>
-                <option value="Tauro">Tauro</option>
                 <option value="Geminis">Géminis</option>
                 <option value="Cancer">Cáncer</option>
                 <option value="Leo">Leo</option>
@@ -49,12 +48,6 @@ function AdminHome({user}){
                 <option value="Capricornio">Capricornio</option>
                 <option value="Acuario">Acuario</option>
                 <option value="Piscis">Piscis</option>
-            </select>
-            <select id="editPerson" onClick={handleSelect}>
-                <option value="P">Seleciona un tipo de persona</option>
-                <option value="Hombre">Hombre</option>
-                <option value="Mujer">Mujer</option>
-                <option value="nino">Niño</option>
             </select>
             <textarea id="textoEditar" cols="50" rows="10" onChange={(e)=> setTextoEditar(e.target.value)}>
 

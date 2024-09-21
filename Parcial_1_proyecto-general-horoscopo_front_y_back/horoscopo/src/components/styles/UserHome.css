@@ -5,18 +5,17 @@
 }
 
 #selectSignos{
-    margin-inline: 0px;
-    margin: 0px;
+    margin: 100px;
+    margin-top: 0px;
     width: 400px;
     padding: 5px 50px 5px 10px;
     border-radius: 10px;
     background-color: rgb(71, 63, 63);
     color: white;
 }
-
-#selectPerson{
-    margin-inline: 0px;
-    margin: 50px;
+#seleccionC{
+    margin: 20px;
+    margin-top: 0px;
     width: 400px;
     padding: 5px 50px 5px 10px;
     border-radius: 10px;
@@ -33,7 +32,7 @@
 
 #btnHome{
     margin-top: 100px;
-    background-color: blue;
+    background-color: lightsteelblue;
     color: white;
     padding: 50px;
     padding-bottom: 5px;
