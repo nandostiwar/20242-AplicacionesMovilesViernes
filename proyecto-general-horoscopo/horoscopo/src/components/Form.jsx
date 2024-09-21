@@ -7,16 +7,35 @@ function Form({callback}){
     const [password, setPassword] = useState(null);
     const goTo = useNavigate();
  
-    const validateUser = (event)=>{
+    const validateUser = (event) => {
         event.preventDefault();
-        if(username === 'user' && password === 'user2023'){
+        
+        // Validar usuario "user"
+        if (username === 'user' && password === 'user2023') {
             callback("user");
             goTo("/userHome");
-        }else if(username === 'admin' && password==='admin2023'){
+        } 
+        // Validar administrador "admin"
+        else if (username === 'admin' && password === 'admin2023') {
             callback("admin");
             goTo("/adminHome");
         }
+        // Validar primer usuario adicional "user1"
+        else if (username === 'erik' && password === '1234') {
+            callback("user1");
+            goTo("/user1Home");
+        } 
+        // Validar segundo usuario adicional "user2"
+        else if (username === 'lombardo' && password === '4321') {
+            callback("user2");
+            goTo("/user2Home");
+        } 
+        // Manejo para credenciales incorrectas
+        else {
+            alert("Usuario o contraseña incorrectos");
+        }
     }
+    
     return (
         <form onSubmit={validateUser}>
             <h1 id="txtBienvenida">Bienvenido a nuestro portal del Zodiaco</h1>

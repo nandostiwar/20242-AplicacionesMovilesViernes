@@ -1,0 +1,13 @@
+
+  {
+    "username": "erik",
+    "password": "1234",
+    "rol":  "user"
+     }
+     ,
+     { 
+    "username": "lombardo",
+    "password": "4321",
+    "rol":  "admin"
+  }
+
