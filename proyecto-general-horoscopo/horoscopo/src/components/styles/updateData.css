@@ -1,19 +1,19 @@
-body {
+body{
     justify-content: center;
     text-align: center;
 }
 
-.entry {
+.entry{
     border-radius: 10px;
     padding: 10px 20px 10px 35px;
 }
 
-form {
+form{
     padding: 20px;
     padding-top: 10%;
 }
 
-#btnEnviar {
+#btnEnviar{
     margin-top: 20px;
     background-color: rgb(48, 27, 238);
     padding: 5px;
@@ -24,7 +24,7 @@ form {
     color: white;
 }
 
-#btnUpdate {
+#btnUpdate{
     margin-top: 20px;
     background-color: rgb(48, 27, 238);
     padding: 5px;
@@ -35,7 +35,7 @@ form {
     color: white;
 }
 
-#btnRegistro {
+#btnRegistro{
     margin-top: 20px;
     background-color: rgb(48, 27, 238);
     padding: 5px;
@@ -47,23 +47,12 @@ form {
 }
 
 
-.txt {
+.txt{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-#txtBienvenida {
+#txtBienvenida{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: oblique;
-    color: white;
-}
-
-.button {
-    margin-top: 20px;
-    background-color: rgb(48, 27, 238);
-    padding: 5px;
-    padding-left: 35px;
-    padding-right: 35px;
-    border-radius: 15px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
 }
