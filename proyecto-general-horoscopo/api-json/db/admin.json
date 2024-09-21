@@ -4,9 +4,9 @@
       "adminId": "zacarias",
       "adminPass": "789456"
     },
- 
+      
     {
-      "adminId": "David",
+      "adminId": "David",  //creo que funciona 
       "adminPass": "8888"
     }
   ]
