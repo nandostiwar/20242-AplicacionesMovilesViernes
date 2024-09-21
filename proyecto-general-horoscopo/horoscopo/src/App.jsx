@@ -17,8 +17,8 @@ function App() {
         <Route index element={<Form callback={setUser}/>}></Route>
         <Route path='/userHome' element={<UserHome user={user}/>}></Route>
         <Route path='/adminHome' element={<AdminHome user={user}/>}></Route>
-        <Route path='/newHome' element={<DataHome user={user}/>}></Route>
-        <Route path='/dataHome' element={<NewHome user={user}/>}></Route>
+        <Route path='/newHome' element={<NewHome user={user}/>}></Route>
+        <Route path='/dataHome' element={<DataHome user={user}/>}></Route>
       </Routes>
     </BrowserRouter>
   )

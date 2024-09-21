@@ -1,5 +1,5 @@
-import { Navigate, useNavigate } from "react-router-dom";
 import './styles/UpdateData.css';
+import { Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function DataHome ({ callback }) {
@@ -84,6 +84,19 @@ function DataHome ({ callback }) {
             <h1 id="txtBienvenida">Bienvenido al actualizador de Datos</h1>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+
+
+            <h4 className="txt">Tipo de Usuario a Actualizar</h4>
+            <select
+                className="entry"
+                value={userType}
+                onChange={(e) => setUserType(e.target.value)}
+            >
+                <option value="user">Usuario</option>
+                <option value="admin">Administrador</option>
+            </select>
+
+            
             <h4 className="txt">Nombre de Usuario</h4>
             <input
                 type="text"
@@ -97,16 +110,10 @@ function DataHome ({ callback }) {
                 className="entry"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
-            /><br />
-            <h4 className="txt">Tipo de Usuario</h4>
-            <select
-                className="entry"
-                value={userType}
-                onChange={(e) => setUserType(e.target.value)}
-            >
-                <option value="user">Usuario</option>
-                <option value="admin">Administrador</option>
-            </select><br />
+
+            /><br />     
+            <br />
+
             <button onClick={updateUserData} id="btnUpdate">Actualizar Datos</button>
             <button onClick={goHome} id="btnUpdate">Home</button>
         </form>

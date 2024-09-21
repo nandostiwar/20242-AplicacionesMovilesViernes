@@ -50,7 +50,7 @@ function Form({ callback }) {
         goTo("/DataHome"); 
     };
 
-    const NewUser = (event) => {
+    const NewHome = (event) => {
         event.preventDefault();
         goTo("/NewHome"); 
     };
@@ -74,8 +74,8 @@ function Form({ callback }) {
                 value={password}
             /><br />
             <input type="submit" value="Ingresar" id="btnEnviar" />
-            <input type="submit" value="Actualziar contraseña" id="btnUpdate" onClick={NewUser}/>
-            <input type="submit" value="Registrar Usuario" id="btnNew" onClick={NewUser}/>
+            <input type="submit" value="Actualziar contraseña" id="btnUpdate" onClick={DataHome}/>
+            <input type="submit" value="Registrar Usuario" id="btnNew" onClick={NewHome}/>
 
             </form>
     );
