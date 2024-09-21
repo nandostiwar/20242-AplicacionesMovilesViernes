@@ -34,6 +34,8 @@ function Form({callback}){
             <h4 className="txt">Contraseña</h4>  
             <input type="password" className="entry" onChange={(e)=> setPassword(e.target.value)}/><br></br>
             <input type="submit" value="Ingresar" id="btnEnviar"/>
+            <button type="button" onClick={() => goTo("/changePassword")} id="btnUpdate">Cambiar Contraseña</button>
+            <button type="button" onClick={() => goTo("/register")} id="btnRegistro">Registrarse</button>
         </form>
     )
 }

@@ -1,7 +1,11 @@
 {
-    "userId": "santiago",
-    "userPass": "12345",
-    "adminId": "jorge",
-    "adminPass": "xyzw"
+    "user": {
+        "username": "pepe",
+        "password": "1234"
+    },
+    "admin": {
+        "username": "santiago",
+        "password": "1010"
+    }
 }
 

@@ -1,35 +1,92 @@
-body{
+/* ./styles/Form.css */
+
+body {
     justify-content: center;
     text-align: center;
 }
 
-.entry{
+.entry {
     border-radius: 10px;
     padding: 10px 20px 10px 35px;
+    width: 80%; /* Añadido para mejor alineación */
+    margin: 0 auto; /* Centrar los campos */
 }
 
-form{
+form {
     padding: 20px;
     padding-top: 10%;
+    max-width: 400px; /* Limitar el ancho del formulario */
+    margin: 0 auto; /* Centrar el formulario */
+    background-color: #333; /* Fondo oscuro para el formulario */
+    border-radius: 10px;
 }
 
-#btnEnviar{
+#btnEnviar, #btnUpdate, #btnRegistro {
     margin-top: 20px;
-    background-color: rgb(48, 27, 238);
-    padding: 5px;
-    padding-left: 35px;
-    padding-right: 35px;
+    padding: 10px 35px;
     border-radius: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white;
+    border: none; /* Quitar el borde */
+    cursor: pointer; /* Cambiar el cursor al pasar el mouse */
+    margin-bottom: 10px; /* Espacio entre botones */
+    width: 100%; /* Hacer que los botones ocupen todo el ancho */
 }
 
-.txt{
+#btnEnviar {
+    background-color: rgb(48, 27, 238);
+}
+
+#btnEnviar:hover {
+    background-color: rgb(38, 17, 178); /* Color más oscuro al pasar el mouse */
+}
+
+#btnUpdate {
+    background-color: #008CBA; /* Azul */
+}
+
+#btnUpdate:hover {
+    background-color: #007bb5;
+}
+
+#btnRegistro {
+    background-color: #f44336; /* Rojo */
+}
+
+#btnRegistro:hover {
+    background-color: #da190b;
+}
+
+.txt {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white; /* Color del texto */
 }
 
-#txtBienvenida{
+#txtBienvenida {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: oblique;
     color: white;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.success-message {
+    color: green;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: white; /* Color del label */
 }
