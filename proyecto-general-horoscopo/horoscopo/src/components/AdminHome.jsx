@@ -56,13 +56,7 @@ function AdminHome({user}){
                 <option value="Piscis">Piscis</option>
             </select>
             
-            <select id="editOpciones" onChange={handleSelectOpcion}>
-                <option value="0">Selecciona una opción</option>
-                <option value="hombre">Hombre</option>
-                <option value="mujer">Mujer</option>
-                <option value="niño">Niño</option>
-                <option value="niña">Niña</option>
-            </select>
+            
 
             {/* El textarea correspondiente para la edición */}
             <textarea id="textoEditar" cols="50" rows="10" onChange={(e)=> setTextoEditar(e.target.value)}>

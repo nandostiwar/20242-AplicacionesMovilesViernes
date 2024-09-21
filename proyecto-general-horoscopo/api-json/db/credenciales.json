@@ -1,8 +1,7 @@
 {
-    "user": "Pepito",
-    "userPass":"12345",
-    "adminID":"Santy",
-    "adminPass": "2024"
-
+    "userId": "santiago",
+    "userPass": "12345",
+    "adminId": "jorge",
+    "adminPass": "xyzw"
 }
 
