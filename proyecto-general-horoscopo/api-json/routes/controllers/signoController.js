@@ -34,6 +34,8 @@ const updateSigno = async (req, res)=>{
     })
 }
 
+
+
 const compareLogin = async (req, res) => {
     const { username, password } = req.body;
 
@@ -68,26 +70,33 @@ const compareLogin = async (req, res) => {
         return res.status(500).json({ resultado: "Error del servidor" });
     }
 }
+//////////////////////////////////////////////////////////////////////////////////////////////
 
-// Actualizacion de Datos 
+const updateUser = async (req, res)=>{
+    const userEditar = req.params.userEditar;
+    const {textoEditar} = req.body;
+    const allSignos = await fs.readFile(path.join(__dirname,'../../db/credenciales.json'));
+    const objSignos = JSON.parse(allSignos);
 
-    const UpdateData = async (req, res)=>{
-        const datosEditar = req.params.datosEditar;
-        const {textoEditar} = req.body;
-        const allSignos = await fs.readFile(path.join(__dirname,'../../db/credenciales.json'));
-        const objSignos = JSON.parse(allSignos);
-    
-        const objUpdate = {
-            ...objSignos,
-            [signoEditar]: textoEditar
-        }
-};
+    const objUpdate = {
+        ...objSignos,
+        [userEditar]: textoEditar
+    }
+
+    // console.log(objUpdate);
+    await fs.writeFile(path.join(__dirname,'../../db/credenciales.json'), JSON.stringify(objUpdate, null, 2), {encoding: 'utf-8'})
+
+    res.json({
+        message: "Updated"
+    })
+}
+
 
 module.exports = {
     getAllSignos,
     getOneSigno,
     updateSigno,
     compareLogin,
-    UpdateData,
+    updateUser
     //newUser
 };

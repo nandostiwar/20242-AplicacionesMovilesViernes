@@ -10,7 +10,7 @@ function DataHome ({ callback }) {
     const [successMessage, setSuccessMessage] = useState('');
     const goTo = useNavigate();
 
-    const UpdateData = async (event) => {
+    const updateUser = async (event) => {
         event.preventDefault();
 
         if (!username || !password) {
@@ -73,6 +73,7 @@ function DataHome ({ callback }) {
                 setSuccessMessage('');
             }
         } catch (error) {
+            
             setErrorMessage('Error al conectar con el servidor.');
             setSuccessMessage('');
             console.error("Error en la solicitud de actualización:", error);
@@ -114,7 +115,7 @@ function DataHome ({ callback }) {
             /><br />     
             <br />
 
-            <button onClick={updateUserData} id="btnUpdate">Actualizar Datos</button>
+            <button onClick={updateUser} id="btnUpdate">Actualizar Datos</button>
             <button onClick={goHome} id="btnUpdate">Home</button>
         </form>
     );
