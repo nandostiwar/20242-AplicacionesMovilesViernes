@@ -5,16 +5,8 @@
 }
 
 #editSignos{
-    margin-top: 0px;
-    margin: 100px;
-    width: 400px;
-    padding: 5px 50px 5px 10px;
-    border-radius: 10px;
-    background-color: rgb(71, 63, 63);
-    color: white;
-}
-
-#editgenero{
+    display: block;  
+    margin-bottom: 10px;
     margin-top: 0px;
     margin: 100px;
     width: 400px;
@@ -25,15 +17,30 @@
 }
 
 #btnEditar{
-    margin-top: 10%;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 10px;
-    background-color: brown;
-    color: white;
-}
+    background-color: #4c5baf; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 15px 30px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    border: 30px; /* Sin borde */
+    border-radius: 25px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor cuando pasas sobre el botón */
+    transition: all 0.3s ease; /* Suaviza las transiciones */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle efecto 3D */
+    outline: none; /* Elimina el borde del enfoque */
+  }
+  
+  .btn:hover {
+    background-color: #45a049; /* Color de fondo cuando pasas el cursor */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+  }
+  
+  .btn:active {
+    transform: scale(1.05); /* Reduce ligeramente el tamaño cuando se hace clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajusta la sombra cuando se hace clic */
+  } 
 
+
+  
 #textoAdmin{
     font-style: italic;
 }
@@ -45,12 +52,25 @@
     color: white;
 }
 
-#btnHomeAdmin{
-    margin-top: 15px;
-    padding: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 10px;
-    background-color: blue;
-    color: white
-}
+#btmupdate{
+    background-color: #4c5baf; /* Color de fondo inicial */
+    color: white; /* Color del texto */
+    padding: 15px 30px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    border: 30px; /* Sin borde */
+    border-radius: 25px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor cuando pasas sobre el botón */
+    transition: all 0.3s ease; /* Suaviza las transiciones */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle efecto 3D */
+    outline: none; /* Elimina el borde del enfoque */
+  }
+  
+  .btn:hover {
+    background-color: #45a049; /* Color de fondo cuando pasas el cursor */
+    transform: scale(1.1); /* Efecto de agrandamiento */
+  }
+  
+  .btn:active {
+    transform: scale(1.05); /* Reduce ligeramente el tamaño cuando se hace clic */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajusta la sombra cuando se hace clic */
+  } 

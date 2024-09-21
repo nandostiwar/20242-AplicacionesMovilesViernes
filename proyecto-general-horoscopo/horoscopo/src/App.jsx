@@ -2,6 +2,8 @@ import './App.css';
 import Form from './components/Form';
 import UserHome from './components/UserHome';
 import AdminHome from './components/AdminHome';
+import ChangePassword from './components/Updatepass';
+import ChangePasswords from './components/crearusers';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
 import { useState } from 'react';
 
@@ -12,6 +14,8 @@ function App() {
       {/* <Navigation/> */}
       <Routes>
         <Route index element={<Form callback={setUser}/>}></Route>
+        <Route path='/cambiarP' element={<ChangePassword/>}></Route>
+        <Route path='/crearusers' element={<ChangePasswords/>}></Route>
         <Route path='/userHome' element={<UserHome user={user}/>}></Route>
         <Route path='/adminHome' element={<AdminHome user={user}/>}></Route>
       </Routes>
