@@ -24,9 +24,19 @@ function Form({callback}){
             <input type="text" className="entry" onChange={(e)=> setUsername(e.target.value)}/><br></br>
             <h4 className="txt">Contraseña</h4>  
             <input type="password" className="entry" onChange={(e)=> setPassword(e.target.value)}/><br></br>
-            <input type="submit" value="Ingresar" id="btnEnviar"/>
+        
+           
+            <div>
+            <input type="submit" value="Ingresar" id="btnEnviar"/>  
+            </div>
+
+            <input type="submit" value="Registrarse" id="constbuttonStyle"/>
+
+            <br/>
+            <input type="submit" value="Olvide mi contraseña" id="constbuttonStyle"/>
+
         </form>
-    )
+    )   
 }
 
 export default Form;
