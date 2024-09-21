@@ -1,0 +1,22 @@
+[
+  {
+    "userId": "lucas",
+    "userPass": "123",
+    "perfil": "user"
+  },
+  {
+    "userId": "harold",
+    "userPass": "09123",
+    "perfil": "user"
+  },
+  {
+    "userId": "luck",
+    "userPass": "123",
+    "perfil": "user"
+  },
+  {
+    "userId": "cami",
+    "userPass": "1234560",
+    "perfil": "user"
+  }
+]

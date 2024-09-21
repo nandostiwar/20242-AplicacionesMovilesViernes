@@ -1,0 +1,27 @@
+[
+  {
+    "userId": "carlos",
+    "userPass": "12345",
+    "perfil": "admin"
+  },
+  {
+    "userId": "carlos 2",
+    "userPass": "12345gt",
+    "perfil": "admin"
+  },
+  {
+    "userId": "soni",
+    "userPass": "123",
+    "perfil": "admin"
+  },
+  {
+    "userId": "liz",
+    "userPass": "123",
+    "perfil": "admin"
+  },
+  {
+    "userId": "jerson herrera",
+    "userPass": "1010",
+    "perfil": "admin"
+  }
+]
