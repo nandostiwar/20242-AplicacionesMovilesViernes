@@ -104,7 +104,7 @@ function Form({ callback }) {
             /><br />
             <button onClick={validateUser} id="btnIngresar">Ingresar</button>
             <button onClick={registerUser} id="btnActualizar">Actualizar</button>
-            <button type="button" onClick={NewUser}>Registro</button>
+            <button type="button" onClick={NewUser} id="btnRegistro">Registro</button>
             
            
             

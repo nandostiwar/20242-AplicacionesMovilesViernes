@@ -40,9 +40,10 @@ function RegisterForm() {
         }
     };
 
-    function goHome(){
-        home("/");
-    }
+    const Home = (event) => {
+        event.preventDefault();
+        goTo("/"); 
+    };
 
     return (
         <form>
@@ -71,8 +72,8 @@ function RegisterForm() {
                 <option value="user">User</option>
                 <option value="admin">Admin</option>
             </select><br />
-            <button onClick={registerUser} id="btnRegistrar">Registrar</button>
-            <button id="btnHomeAdmin" onClick={goHome}>Home</button>
+            <button id="btnRegistro" onClick={registerUser}>Registrar</button>
+            <button id="btnHomeAdmin" onClick={Home}>Home</button>
         </form>
     );
 }

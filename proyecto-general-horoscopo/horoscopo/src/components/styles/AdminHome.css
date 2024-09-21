@@ -44,3 +44,32 @@
     background-color: blue;
     color: white
 }
+
+    #btnRegistro{
+        margin-top: 15px;
+        padding: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 10px;
+        background-color: blue;
+        color: white
+}
+
+#btnActualizar{
+    margin-top: 15px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white
+}
+#btnIngresar{
+    margin-top: 15px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    background-color: blue;
+    color: white
+}
