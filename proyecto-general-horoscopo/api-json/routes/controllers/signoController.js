@@ -88,5 +88,6 @@ module.exports = {
     getOneSigno,
     updateSigno,
     compareLogin,
-    UpdateData
+    UpdateData,
+    //newUser
 };

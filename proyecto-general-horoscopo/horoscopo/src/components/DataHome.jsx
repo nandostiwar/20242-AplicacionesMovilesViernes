@@ -2,7 +2,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import './styles/UpdateData.css';
 import { useState } from "react";
 
-function UpdateData ({ callback }) {
+function DataHome ({ callback }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('user');
@@ -10,7 +10,7 @@ function UpdateData ({ callback }) {
     const [successMessage, setSuccessMessage] = useState('');
     const goTo = useNavigate();
 
-    const validateUser = async (event) => {
+    const UpdateData = async (event) => {
         event.preventDefault();
 
         if (!username || !password) {
@@ -42,6 +42,10 @@ function UpdateData ({ callback }) {
             console.error("Error en la solicitud:", error);
         }
     };
+
+    function goHome(){
+        home("/goHome");
+    }
 
     const updateUserData = async (event) => {
         event.preventDefault();
@@ -103,8 +107,9 @@ function UpdateData ({ callback }) {
                 <option value="admin">Administrador</option>
             </select><br />
             <button onClick={updateUserData} id="btnUpdate">Actualizar Datos</button>
+            <button onClick={goHome} id="btnUpdate">Home</button>
         </form>
     );
 }
 
-export default updateDatos;
+export default DataHome;
