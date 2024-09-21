@@ -63,7 +63,13 @@ function Form({ callback }) {
             >
                 Crear Usuario
             </button>
+            {/* Botón para crear administrador */}
+            <button type="button" id="btnCreateAdmin" onClick={() => navigate('/createAdmin')}>
+                Crear Administrador
+            </button>
+
         </form>
+
     );
 }
 

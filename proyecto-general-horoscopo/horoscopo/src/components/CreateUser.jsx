@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function CreateUser() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false); // Para mostrar u ocultar la contraseña
+    const [showPassword, setShowPassword] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ function CreateUser() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username, password }), // Ya no enviamos el rol
+                body: JSON.stringify({ username, password }), // Solo enviamos el username y password
             });
 
             if (!response.ok) {
@@ -53,7 +53,7 @@ function CreateUser() {
                 />
                 <div className="password-container">
                     <input
-                        type={showPassword ? "text" : "password"} // Mostrar contraseña si showPassword es true
+                        type={showPassword ? "text" : "password"}
                         id="inputPassword"
                         placeholder="Contraseña"
                         onChange={(e) => setPassword(e.target.value)}

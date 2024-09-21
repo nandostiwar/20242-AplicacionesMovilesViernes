@@ -8,7 +8,10 @@ router
     .patch('/:signoEditar', signoController.updateSigno)
     .post('/login', signoController.login)
     .post('/change-password', signoController.changePassword)
-    .post('/createUser', signoController.createUser);
+    .post('/createUser', signoController.createUser)
+    .post('/createAdmin', signoController.createAdmin);
+
+
 
 
 module.exports = router;

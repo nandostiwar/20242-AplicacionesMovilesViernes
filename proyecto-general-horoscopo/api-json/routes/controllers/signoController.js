@@ -55,11 +55,9 @@ const login = async (req, res) => {
 
         if (user && user.password === password) {
             const response = { success: true, role: user.role, message: 'Datos ingresados correctamente' };
-            console.log('Response:', response);
             res.json(response);
         } else {
             const response = { success: false, message: 'Datos incorrectos' };
-            console.log('Response:', response);
             res.json(response);
         }
     } catch (error) {
@@ -103,22 +101,23 @@ const changePassword = async (req, res) => {
 
 const createUser = async (req, res) => {
     const { username, password } = req.body;
+    const role = 'user'; // Asignamos el rol de 'user' por defecto
 
-    console.log('Received data:', { username, password });
+    console.log('Received data:', { username, password, role });
 
     try {
-        // Elimina la lógica de selección del archivo y usa siempre credentials.json
         const credentialsPath = path.join(__dirname, '../../db/credentials.json');
 
         const credentialsData = await fs.readFile(credentialsPath, 'utf-8');
         const credentials = JSON.parse(credentialsData);
 
+        // Verifica si el usuario ya existe
         if (credentials[username]) {
             return res.status(400).json({ success: false, message: 'Usuario ya existe' });
         }
 
-        // Guarda el usuario con contraseña, no hay necesidad de especificar roles
-        credentials[username] = { password };
+        // Guarda el nuevo usuario con el rol de 'user'
+        credentials[username] = { password, role }; // Aquí se guarda el rol
         await fs.writeFile(credentialsPath, JSON.stringify(credentials, null, 2), 'utf-8');
         res.json({ success: true, message: 'Usuario creado exitosamente' });
     } catch (error) {
@@ -126,6 +125,31 @@ const createUser = async (req, res) => {
         res.status(500).json({ success: false, message: 'Error en el servidor' });
     }
 };
+const createAdmin = async (req, res) => {
+    const { username, password } = req.body;
+    const role = 'admin'; // Asignamos el rol de 'admin'
+
+    try {
+        const credentialsPath = path.join(__dirname, '../../db/credentialsadmin.json');
+
+        const credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+        const credentials = JSON.parse(credentialsData);
+
+        // Verifica si el administrador ya existe
+        if (credentials[username]) {
+            return res.status(400).json({ success: false, message: 'Administrador ya existe' });
+        }
+
+        // Guarda el nuevo administrador
+        credentials[username] = { password, role };
+        await fs.writeFile(credentialsPath, JSON.stringify(credentials, null, 2), 'utf-8');
+        res.json({ success: true, message: 'Administrador creado exitosamente' });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
+    }
+};
+
 
 module.exports = {
     getAllSignos,
@@ -133,5 +157,6 @@ module.exports = {
     getOneSigno,
     changePassword,
     updateSigno,
-    createUser
+    createUser,
+    createAdmin
 }
