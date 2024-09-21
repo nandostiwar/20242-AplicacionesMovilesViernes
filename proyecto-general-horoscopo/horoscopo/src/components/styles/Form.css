@@ -1,0 +1,61 @@
+body {
+    justify-content: center;
+    text-align: center;
+}
+
+.entry {
+    border-radius: 10px;
+    padding: 10px 20px 10px 35px;
+}
+
+form {
+    padding: 20px;
+    padding-top: 10%;
+}
+
+#btnEnviar, #btnCC, #btnAddUser {
+    margin-top: 20px;
+    background-color: rgb(48, 27, 238);
+    padding: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#btnCC:hover, #btnAddUser:hover {
+    background-color: rgb(30, 20, 180);
+}
+
+.txt {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#txtBienvenida {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: oblique;
+    color: white;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
