@@ -3,5 +3,10 @@
     "userId": "jose",
     "userPass": "112233",
     "perfil": "user"
+  },
+  {
+    "userId": "daniela",
+    "userPass": "2121",
+    "perfil": "user"
   }
 ]

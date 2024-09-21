@@ -33,7 +33,7 @@ function AdminHome({user}){
     }
 
     return (
-        <div class="container">
+        <div className="container">
             <h2 id="textoAdmin">Edita un Signo Zodiacal</h2>
             <select id="editSignos" onClick={handleSelect}>
                 <option value="0">Seleciona un signo zodiacal</option>
