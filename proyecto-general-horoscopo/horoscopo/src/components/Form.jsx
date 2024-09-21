@@ -37,14 +37,22 @@ function Form({callback}) {
         fetch(`http://localhost:4000/v1/signos/newpass`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, newPassword }) 
+            body: JSON.stringify({ username, password, newPassword }) // Enviamos username, password actual y newPassword
         })
         .then(res => res.json())
         .then(response => {
             if (response.message === "Password ha sido modificado") {
                 alert("Contraseña cambiada con éxito");
-                setIsChangingPassword(false);
+                setIsChangingPassword(false); // Ocultamos el formulario de cambio de contraseña
+                window.location.reload();
+            } else {
+                alert(response.message); // Mostramos cualquier mensaje de error
+                
             }
+        })
+        .catch(error => {
+            console.error("Error al cambiar la contraseña:", error);
+            alert("Hubo un error al intentar cambiar la contraseña");
         });
     };
 
@@ -115,8 +123,8 @@ function Form({callback}) {
                     /><br />
                     <h4 className="txt">Perfil</h4>
                     <select className="entry" onChange={(e) => setNewUserPerfil(e.target.value)}>
-                        <option value="user">ADMIN</option>
-                        <option value="admin">USER</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
                     </select><br />
                     <button onClick={createNewUser}>Crear Usuario</button>
                 </div>

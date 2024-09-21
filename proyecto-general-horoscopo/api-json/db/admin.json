@@ -5,18 +5,8 @@
     "perfil": "admin"
   },
   {
-    "userId": "user",
-    "userPass": "user",
-    "perfil": "user"
-  },
-  {
     "userId": "gerente",
     "userPass": "gerente",
     "perfil": "admin"
-  },
-  {
-    "userId": "cliente",
-    "userPass": "cliente",
-    "perfil": "user"
   }
 ]
