@@ -8,12 +8,10 @@ function Form({ callback }) {
     const [showModal, setShowModal] = useState(false);
     const [newUsername, setNewUsername] = useState("");
     const [newPassword, setNewPassword] = useState("");
-    const [role, setRole] = useState("user"); // Nuevo estado para el rol
-    const [showCreateUser, setShowCreateUser] = useState(false); // Estado para el formulario de creación de usuario
-
+    const [role, setRole] = useState("user"); 
+    const [showCreateUser, setShowCreateUser] = useState(false); 
     const goTo = useNavigate();
 
-    // Función para validar el login
     const validateUser = (event) => {
         event.preventDefault();
         fetch(`http://localhost:4000/v1/signos/login`, {
@@ -39,11 +37,11 @@ function Form({ callback }) {
             });
     };
 
-    // Nueva función para crear un usuario o admin
+    
     const handleCreateUserOrAdmin = (event) => {
         event.preventDefault();
 
-        // Validación simple
+       
         if (!newUsername || !newPassword) {
             alert('Por favor, ingrese un nombre de usuario y contraseña.');
             return;
@@ -58,7 +56,7 @@ function Form({ callback }) {
             .then(responseData => {
                 alert(responseData.message);
                 if (responseData.success) {
-                    closeCreateUserForm(); // Cierra el formulario de crear usuario
+                    closeCreateUserForm(); 
                 }
             })
             .catch(error => {
@@ -108,8 +106,8 @@ function Form({ callback }) {
 
     const closeCreateUserForm = () => {
         setShowCreateUser(false);
-        setNewUsername(""); // Limpiar el input
-        setNewPassword(""); // Limpiar el input
+        setNewUsername(""); 
+        setNewPassword(""); 
     };
 
     return (
@@ -160,7 +158,7 @@ function Form({ callback }) {
                         <h4 className="txt">Contraseña</h4>
                         <input type="password" className="entry" onChange={(e) => setNewPassword(e.target.value)} /><br />
                         
-                        {/* Selector para elegir el rol */}
+                        {}
                         <h4 className="txt">Rol</h4>
                         <select value={role} onChange={(e) => setRole(e.target.value)}>
                             <option value="user">Usuario</option>
