@@ -131,7 +131,6 @@ const crearuser = async (req, res) => {
             const data = await fs.readFile(path.join(__dirname, '../../db/admin.json'), 'utf-8');
             const adminData = JSON.parse(data);
 
-           
             const adminExists = adminData.admins.some(admin => admin.adminId === username);
             if (adminExists) {
                 return res.json({ resultado: "El admin ya existe" });

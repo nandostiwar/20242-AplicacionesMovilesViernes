@@ -1,35 +1,42 @@
-body{
+body {
     justify-content: center;
     text-align: center;
+    background-color: black; /* Fondo negro */
 }
 
-.entry{
+.entry {
     border-radius: 10px;
     padding: 10px 20px 10px 35px;
+    background-color: #330000; /* Fondo rojo oscuro para las entradas */
+    color: white; /* Texto en blanco para mayor contraste */
 }
 
-form{
+form {
     padding: 20px;
     padding-top: 10%;
+    background-color: #1a1a1a; /* Fondo negro para el formulario */
+    color: white; /* Texto en blanco */
 }
 
-#btnEnviar{
+#btnEnviar {
     margin-top: 20px;
-    background-color: rgb(48, 27, 238);
+    background-color: red; /* Botón en rojo brillante */
     padding: 5px;
     padding-left: 35px;
     padding-right: 35px;
     border-radius: 15px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: white;
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
 }
 
-.txt{
+.txt {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white; /* Texto en blanco */
 }
 
-#txtBienvenida{
+#txtBienvenida {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: oblique;
-    color: white;
+    color: red; /* Texto en rojo */
 }
