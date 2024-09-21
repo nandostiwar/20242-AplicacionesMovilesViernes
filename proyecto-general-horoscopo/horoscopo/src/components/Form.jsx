@@ -49,6 +49,12 @@ function Form({ callback }) {
         goTo("/UpdateData"); 
     };
 
+    const Register = (event) => {
+        event.preventDefault();
+        goTo("/Registro"); 
+    };
+
+
     return (
         <form onSubmit={validateUser}>
             <h1 id="txtBienvenida">Bienvenido a nuestro portal del Zodiaco</h1>
@@ -68,10 +74,12 @@ function Form({ callback }) {
                 value={password}
             /><br />
             <input type="submit" value="Ingresar" id="btnEnviar" />
-            <button onClick={Update} id="btnUpdate">Actualizar Datos</button> {/* Botón de Actualizar */}
-            <button onClick={Update} id="btnRegistro">Registro</button> {/* Botón de Actualizar */}
+            <button type="button" onClick={Update} id="btnUpdate">Actualizar información</button>
+            <button onClick={Register} id="btnRegistro">Registro</button> {/* Botón de Actualizar */}
         </form>
     );
+    
+    
 }
 
 export default Form;
