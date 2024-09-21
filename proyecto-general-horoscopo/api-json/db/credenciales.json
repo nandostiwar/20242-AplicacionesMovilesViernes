@@ -1,0 +1,23 @@
+[
+  {
+    "userId": "nando",
+    "data": {
+      "password": "1234",
+      "rol": "user"
+    }
+  },
+  {
+    "userId": "jorge",
+    "data": {
+      "password": "xyzw",
+      "rol": "admin"
+    }
+  },
+  {
+    "userId": "jose",
+    "data": {
+      "password": "jose",
+      "rol": "admin"
+    }
+  }
+]
