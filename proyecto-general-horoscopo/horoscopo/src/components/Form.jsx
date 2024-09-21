@@ -37,8 +37,12 @@ function Form({callback}){
             <input type="submit" value="Ingresar" id="btnEnviar"/>
 
             {/* Enlace para 'Olvidé mi contraseña' */}
-            <a href="" onClick={() => goTo("/cambiarP")} id="forgotPasswordLink">cambiar contrasena</a>
-            <a href="" onClick={() => goTo("/crearusers")} id="forgotPasswordLink">agregar usuarios</a>
+            <button onClick={() => goTo("/cambiarP")} id="forgotPasswordLink">Cambiar Contraseña</button>
+    
+
+            <button onClick={() => goTo("/crearusers")} id="forgotPasswordLink">Agregar Usuarios</button>
+    
+
             
         </form>   
     )
