@@ -11,7 +11,12 @@
   },
   {
     "userId": "mateo",
-    "userPass": "mateo1",
+    "userPass": "mateo3",
+    "perfil": "user"
+  },
+  {
+    "userId": "nando",
+    "userPass": "nando",
     "perfil": "user"
   }
 ]
