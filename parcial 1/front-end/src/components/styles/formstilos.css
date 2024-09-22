@@ -1,0 +1,80 @@
+body {
+    background-color: #f0f8ff;
+    font-family: 'Arial', sans-serif;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to bottom right, #ffffff, #e6f7ff);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.txt {
+    color: #555;
+    margin: 10px 0;
+}
+
+.entry {
+    width: calc(100% - 22px); /* Restamos 22px para el padding y el borde */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s;
+    display: block; /* Asegura que el input ocupe toda la línea */
+    margin-left: auto; /* Centrado automático */
+    margin-right: auto; /* Centrado automático */
+}
+
+.entry:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+.btn-link, .btn-cancel {
+    background: none;
+    color: #007bff;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+.btn-link:hover, .btn-cancel:hover {
+    color: #0056b3;
+}
+
+.change-password {
+    margin-top: 20px;
+}
