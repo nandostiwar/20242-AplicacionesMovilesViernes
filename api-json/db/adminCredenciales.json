@@ -1,27 +1,32 @@
 [
   {
-    "userId": "carlos",
+    "userId": "jey",
+    "userPass": "1234",
+    "perfil": "admin"
+  },
+  {
+    "userId": "sasa",
     "userPass": "12345",
     "perfil": "admin"
   },
   {
-    "userId": "carlos 2",
-    "userPass": "12345gt",
+    "userId": "lucas",
+    "userPass": "arbol",
     "perfil": "admin"
   },
   {
-    "userId": "soni",
-    "userPass": "123",
+    "userId": "felix",
+    "userPass": "hola",
     "perfil": "admin"
   },
   {
-    "userId": "liz",
-    "userPass": "123",
+    "userId": "felix",
+    "userPass": "12345",
     "perfil": "admin"
   },
   {
-    "userId": "jerson herrera",
-    "userPass": "1010",
+    "userId": "sasa",
+    "userPass": "1234",
     "perfil": "admin"
   }
 ]

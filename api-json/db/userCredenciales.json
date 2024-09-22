@@ -1,22 +1,22 @@
 [
   {
+    "userId": "jey",
+    "userPass": "12345",
+    "perfil": "user"
+  },
+  {
+    "userId": "sasas",
+    "userPass": "asasasa",
+    "perfil": "user"
+  },
+  {
     "userId": "lucas",
-    "userPass": "123",
+    "userPass": "1234",
     "perfil": "user"
   },
   {
-    "userId": "harold",
-    "userPass": "09123",
-    "perfil": "user"
-  },
-  {
-    "userId": "luck",
-    "userPass": "123",
-    "perfil": "user"
-  },
-  {
-    "userId": "cami",
-    "userPass": "1234560",
+    "userId": "jerico",
+    "userPass": "manzana",
     "perfil": "user"
   }
 ]

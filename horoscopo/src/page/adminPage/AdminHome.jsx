@@ -1,5 +1,5 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import './styles/AdminHome.css'
+import './AdminHome.css'
 import { useState } from "react";
 
 function AdminHome({user}){
@@ -22,10 +22,8 @@ function AdminHome({user}){
     }
 
     function handleClick(e){
-        // console.log(signoEditar);
-        // console.log(textoEditar);
         e.preventDefault();
-        fetch(`http://localhost:4000/v1/signos/${signoEditar}`, {
+        fetch(`http://localhost:4000/api/signos/actualizar/${signoEditar}`, {
             method: 'PATCH',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({"textoEditar": textoEditar})

@@ -34,25 +34,26 @@ form{
     color: white;
 }
 
+
+/*Css para los botones de crear y actualizar*/
 .button {
-    background-color: #4CAF50; 
+    background-color: #007bff; 
     color: white; 
-    padding: 10px 20px; 
+    padding: 10px 20px;
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
     font-size: 16px; 
     transition: background-color 0.3s; 
-}
-
-.button:hover {
-    background-color: #45a049; 
-}
-
-.button:focus {
-    outline: none; 
-}
-
-.button:active {
-    background-color: #3e8e41; 
-}
+    margin: 10px; /*Espacio entre los botones*/
+  }
+  
+  .button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el cursor */
+  }
+  
+  .button:focus {
+    outline: none; /* Sin contorno al hacer clic */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra al hacer clic */
+  }
+  

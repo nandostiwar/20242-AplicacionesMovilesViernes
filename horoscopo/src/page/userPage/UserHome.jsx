@@ -1,6 +1,6 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import './styles/UserHome.css';
-import TextSigno from "./TextSigno.jsx";
+import './UserHome.css';
+import TextSigno from "../../components/textSignoComponent/TextSigno.jsx";
 import { useState } from "react";
 
 function UserHome({user}){
@@ -17,7 +17,7 @@ function UserHome({user}){
     async function handleSelect(event){
         const signo = event.target.value;
         if(signo!=="0"){
-            fetch(`http://localhost:4000/v1/signos/${signo}`)
+            fetch(`http://localhost:4000/api/signos/${signo}`)
                 .then(response => response.json())
                 .then(responseData => setTextoSigno(responseData))
         } 

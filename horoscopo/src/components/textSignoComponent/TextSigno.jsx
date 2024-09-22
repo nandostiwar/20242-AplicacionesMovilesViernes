@@ -1,4 +1,4 @@
-import './styles/TextSigno.css';
+import './TextSigno.css';
 
 function TextSigno({texto}){
     return (

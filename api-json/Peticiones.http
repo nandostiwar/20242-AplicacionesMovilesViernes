@@ -1,0 +1,32 @@
+//SIGNOS
+//OBTENER TODOS LOS SIGNOS
+GET http://localhost:4000/api/signos/getSignos
+
+//OBTENER SINGO EN ESPECIFICO
+GET http://localhost:4000/api/signos/Virgo 
+
+//ACTUALIZAR UN SIGNO
+PATCH  http://localhost:4000/api/signos/actualizar/Virgo
+
+
+
+//USERS
+//CREAR UN NUEVO USUARIO
+POST http://localhost:4000/api/createUser
+{
+	"username": "pepito",
+    "password": "12345",
+    "perfil": "admin"
+}
+
+//ACTUALIZAR CONTRASEÑA DE USER O ADMIN
+POST http://localhost:4000/api/actualizarPassword
+{
+  "userId": "jey",
+  "currentPassword": "1234",
+  "newPassword": "12345",
+  "perfil": "admin"
+}
+
+
+
