@@ -1,4 +1,3 @@
-// src/components/Registro.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Form.css'; // Usamos el mismo estilo que ya tienes
@@ -48,44 +47,36 @@ const Registro = () => {
   };
 
   return (
-    <div className="form-container">
-      <h2>Registro de Usuario</h2>
-      <form onSubmit={handleRegister} className="form">
-        <div className="form-group">
-          <label htmlFor="username">Nombre de usuario:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="userType">Tipo de usuario:</label>
-          <select
-            id="userType"
-            value={userType}
-            onChange={(e) => setUserType(e.target.value)}
-          >
-            <option value="user">Usuario</option>
-            <option value="admin">Administrador</option>
-          </select>
-        </div>
-        {errorMessage && <p className="error">{errorMessage}</p>}
-        <button type="submit">Registrar</button>
-      </form>
-    </div>
+    <form onSubmit={handleRegister}>
+      <h1 id="txtBienvenida">Registro de Usuario</h1>
+      <h4 className="txt">Nombre de Usuario</h4>
+      <input
+        type="text"
+        className="entry"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        required
+      />
+      <h4 className="txt">Contraseña</h4>
+      <input
+        type="password"
+        className="entry"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
+      <h4 className="txt">Tipo de Usuario</h4>
+      <select
+        className="entry"
+        value={userType}
+        onChange={(e) => setUserType(e.target.value)}
+      >
+        <option value="user">Usuario</option>
+        <option value="admin">Administrador</option>
+      </select>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      <input type="submit" value="Registrar" id="btnEnviar" />
+    </form>
   );
 };
 

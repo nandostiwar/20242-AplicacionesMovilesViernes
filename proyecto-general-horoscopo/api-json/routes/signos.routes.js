@@ -9,4 +9,5 @@ router
     .put('/updateData', signoController.UpdateData)
     .post('/registro', signoController.registerUser);
 
+
 module.exports = router;
