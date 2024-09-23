@@ -132,10 +132,46 @@ const UpdateData = async (req, res) => {
 };
 
 
+const registerUser = async (req, res) => {
+    const { username, password, userType } = req.body;
+  
+    if (!username || !password || !userType) {
+      return res.status(400).json({ message: "Faltan datos para registrar." });
+    }
+  
+    try {
+      let filePath;
+      if (userType === 'user') {
+        filePath = path.join(__dirname, '../../db/users.json');
+      } else if (userType === 'admin') {
+        filePath = path.join(__dirname, '../../db/admins.json');
+      } else {
+        return res.status(400).json({ message: "Tipo de usuario inválido." });
+      }
+  
+      const data = await fs.readFile(filePath, 'utf8');
+      const credenciales = JSON.parse(data);
+  
+      if (credenciales[username]) {
+        return res.status(400).json({ message: "El usuario ya existe." });
+      }
+  
+      credenciales[username] = { password };
+  
+      await fs.writeFile(filePath, JSON.stringify(credenciales, null, 2), 'utf-8');
+  
+      res.status(201).json({ message: "Usuario registrado exitosamente." });
+    } catch (error) {
+      console.error("Error al registrar usuario:", error);
+      res.status(500).json({ message: "Error del servidor al registrar el usuario." });
+    }
+  };
+
 module.exports = {
     getAllSignos,
     getOneSigno,
     updateSigno,
     compareLogin,
     UpdateData,
+    registerUser
 };

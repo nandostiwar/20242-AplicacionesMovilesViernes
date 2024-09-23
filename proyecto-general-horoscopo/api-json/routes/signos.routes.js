@@ -6,6 +6,7 @@ router
     .get('/:signo', signoController.getOneSigno)
     .patch('/:signoEditar', signoController.updateSigno)
     .post('/login', signoController.compareLogin)
-    .put('/updateData', signoController.UpdateData);
+    .put('/updateData', signoController.UpdateData)
+    .post('/registro', signoController.registerUser);
 
 module.exports = router;
