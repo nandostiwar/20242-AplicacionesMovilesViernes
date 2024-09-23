@@ -25,7 +25,8 @@ const updateSigno = async (req, res)=>{
         ...objSignos,
         [signoEditar]: textoEditar
     }
-        // console.log(objUpdate);
+
+    // console.log(objUpdate);
     await fs.writeFile(path.join(__dirname,'../../db/signos.json'), JSON.stringify(objUpdate, null, 2), {encoding: 'utf-8'})
 
     res.json({
@@ -34,6 +35,7 @@ const updateSigno = async (req, res)=>{
 }
 
 
+// Actualizacion de Datos 
 
 ///////////////////COMPARAR SI ES USUARIO O ADMINISTRADOR //////////////////
 const compareLogin = async (req, res) => {
@@ -135,5 +137,5 @@ module.exports = {
     getOneSigno,
     updateSigno,
     compareLogin,
-    UpdateData
+    UpdateData,
 };

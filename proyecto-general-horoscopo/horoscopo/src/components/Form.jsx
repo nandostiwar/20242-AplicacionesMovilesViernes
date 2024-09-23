@@ -38,6 +38,41 @@ function Form({callback}){
             <button type="button" onClick={() => goTo("/register")} id="btnRegistro">Registrarse</button>
         </form>
     )
+    // Redirige a la página de actualización de datos
+    const updateData = (event) => {
+        event.preventDefault();
+        goTo("/updateData"); 
+    };
+
+    const NewUser = (event) => {
+        event.preventDefault();
+        goTo("/NewHome"); 
+    };
+
+    return (
+        <form onSubmit={validateUser}>
+            <h1 id="txtBienvenida">Bienvenido a nuestro portal del Zodiaco</h1>
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            <h4 className="txt">Nombre de Usuario</h4>
+            <input
+                type="text"
+                className="entry"
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
+            /><br />
+            <h4 className="txt">Contraseña</h4>
+            <input
+                type="password"
+                className="entry"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+            /><br />
+            <input type="submit" value="Ingresar" id="btnEnviar" />
+            <input type="submit" value="Actualziar contraseña" id="btnUpdate" onClick={updateDatar}/>
+            <input type="submit" value="Registrar Usuario" id="btnNew" onClick={NewUser}/>
+
+            </form>
+    );
 }
 
 export default Form;
