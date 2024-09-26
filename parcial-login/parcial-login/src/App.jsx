@@ -3,7 +3,7 @@ import Form from './components/Form';
 import UserHome from './components/userHome';
 import AdminHome from './components/adminHome';
 import FormCambioPass from './components/FormCambioPass';
-import Registrarse from './components/registrarse'; 
+import Registrarse from './components/Registrarse';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
 import { useState } from 'react';
 

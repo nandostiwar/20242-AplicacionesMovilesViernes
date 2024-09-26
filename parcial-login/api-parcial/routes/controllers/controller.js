@@ -1,11 +1,21 @@
 const fs = require('fs/promises');
 const path = require('path');
-const users = require('../../db/user');
-const admins = require('../../db/admin');
+const users = require('../../db/user').default;
+const admins = require('../../db/admin').default;
 
 // Rutas para escribir en los archivos user.js y admin.js
-const userPath = path.join(__dirname, './db/user.js');
-const adminPath = path.join(__dirname, './db/admin.js');
+const userPath = path.join(__dirname, '../../db/user.js');
+const adminPath = path.join(__dirname, '../../db/admin.js');
+
+const getUsers = async () => {
+    const users = require(userPath);
+    return users;
+};
+
+const getAdmins = async () => {
+    const admins = require(adminPath);
+    return admins;
+};
 
 // Comparar login de usuarios y administradores
 const compareLogin = (req, res) => {
@@ -25,13 +35,12 @@ const compareLogin = (req, res) => {
 };
 
 // Crear nuevo perfil de usuario o administrador
-const newPerfil = async (req, res) => {
+const newProfile = async (req, res) => {
     const { user, pass, rol } = req.body;
 
-    // Verificar que el rol sea válido (user o admin)
-    if (rol !== 'user' && rol !== 'admin') {
-        return res.status(400).json({ error: 'Rol no válido. Debe ser "user" o "admin".' });
-    }
+    // Cargar los datos de los archivos user.js y admin.js
+    let users = require(userPath);
+    let admins = require(adminPath);
 
     // Verificar que el usuario no exista ya en ninguna de las bases de datos
     const existingUser = users.find(u => u.user === user) || admins.find(a => a.user === user);
@@ -62,49 +71,58 @@ const newPerfil = async (req, res) => {
 const updatePassword = async (req, res) => {
     const { user, oldPass, newPass } = req.body;
 
-    // Buscar usuario en ambas bases de datos
-    let userToUpdate = users.find(u => u.user === user);
-    let isAdmin = false;
-    
-    if (!userToUpdate) {
-        userToUpdate = admins.find(a => a.user === user);
-        isAdmin = !!userToUpdate;
-    }
+    try {
+        // Cargar los usuarios y administradores desde los archivos
+        let users = await getUsers();
+        let admins = await getAdmins();
 
-    // Caso 1: Usuario no encontrado
-    if (!userToUpdate) {
-        return res.status(404).json({ error: 'Usuario no encontrado' });
-    }
+        // Inicializar banderas
+        let isUser = false;
+        let isAdmin = false;
 
-    // Caso 2: Contraseña incorrecta
-    if (userToUpdate.pass !== oldPass) {
-        return res.status(401).json({ error: 'Contraseña incorrecta' });
-    }
-
-    // Actualizar la contraseña
-    userToUpdate.pass = newPass;
-
-    // Guardar los cambios si es un usuario común
-    if (!isAdmin) {
-        try {
-            await fs.writeFile(userPath, `module.exports = ${JSON.stringify(users, null, 2)};`, 'utf8');
-            return res.status(200).json({ message: 'Contraseña cambiada exitosamente' });
-        } catch (error) {
-            return res.status(500).json({ error: 'Error al guardar la nueva contraseña' });
+        // Buscar primero en la base de datos de usuarios
+        let userToUpdate = users.find(u => u.user === user);
+        if (userToUpdate) {
+            isUser = true;  // Si se encuentra en usuarios, marcar isUser como true
+        } else {
+            // Si no se encuentra en usuarios, buscar en administradores
+            userToUpdate = admins.find(a => a.user === user);
+            if (userToUpdate) {
+                isAdmin = true;  // Si se encuentra en admins, marcar isAdmin como true
+            }
         }
-    } else {
-        // Si es un admin, actualizar admin.js
-        try {
-            await fs.writeFile(adminPath, `module.exports = ${JSON.stringify(admins, null, 2)};`, 'utf8');
-            return res.status(200).json({ message: 'Contraseña de administrador cambiada exitosamente' });
-        } catch (error) {
-            return res.status(500).json({ error: 'Error al guardar la nueva contraseña de administrador' });
+
+        // Caso 1: Usuario no encontrado en ambas bases de datos
+        if (!isUser && !isAdmin) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
         }
+
+        // Caso 2: Contraseña antigua no coincide
+        if (userToUpdate.pass !== oldPass) {
+            return res.status(401).json({ error: 'Contraseña incorrecta' });
+        }
+
+        // Caso 3: Actualizar la contraseña
+        userToUpdate.pass = newPass;
+
+        // Guardar los cambios si es usuario común
+        if (isUser) {
+            await fs.writeFile(userPath, JSON.stringify(users, null, 2), 'utf8');
+        } else if (isAdmin) {
+            // Guardar los cambios si es administrador
+            await fs.writeFile(adminPath, JSON.stringify(admins, null, 2), 'utf8');
+        }
+
+        // Respuesta de éxito
+        res.status(200).json({ message: 'Contraseña cambiada exitosamente' });
+    } catch (error) {
+        res.status(500).json({ error: 'Error al actualizar la contraseña' });
     }
 };
 
+
 module.exports = {
     compareLogin,
-    newPerfil,
-    updatePassword
+    newProfile,
+    updatePassword   
 };
