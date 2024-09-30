@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas
-app.use('/', routes);
+app.use('/v1/api', routes);
 
 // Iniciar el servidor
 app.listen(PORT, () => {

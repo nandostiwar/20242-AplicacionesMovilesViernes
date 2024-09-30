@@ -13,7 +13,7 @@ function Registrarse({ callback }) {
     
     const registerUser = (event) => {
         event.preventDefault();
-        let url = 'http://localhost:4000/nuevaCuenta';
+        let url = 'http://localhost:4000/v1/api/nuevaCuenta';
 
         fetch(url, {
             method: 'POST',

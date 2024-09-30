@@ -8,7 +8,7 @@ function Form({ callback }) {
 
     const validateUser = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:4000/login`, {
+        fetch(`http://localhost:4000/v1/api/login`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ user: username, pass: password }) // Asegúrate de usar los nombres correctos de los campos según tu servidor
