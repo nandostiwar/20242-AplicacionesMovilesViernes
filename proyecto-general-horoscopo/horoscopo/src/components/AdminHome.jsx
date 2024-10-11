@@ -25,7 +25,7 @@ function AdminHome({user}){
         // console.log(signoEditar);
         // console.log(textoEditar);
         e.preventDefault();
-        fetch(`http://localhost:4000/v1/signos/${signoEditar}`, {
+        fetch(`http://localhost:4000/v1/${signoEditar}`, {
             method: 'PATCH',
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({"textoEditar": textoEditar})

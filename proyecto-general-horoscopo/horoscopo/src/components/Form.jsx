@@ -7,25 +7,42 @@ function Form({callback}){
     const [password, setPassword] = useState(null);
     const goTo = useNavigate();
  
-    const validateUser = (event)=>{
+    const validateUser = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:4000/v1/signos/login`, {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({username, password})
-        })
-            .then(res =>res.json())
-            .then(responseData => {
-                if(responseData.resultado === 'user'){
-                    callback("user");
-                    goTo("/userHome");
-                }else if(responseData.resultado === 'admin'){
-                    callback("admin");
-                    goTo("/adminHome");
-                }
-            })
         
-    }
+        if (!username || !password) {
+            alert('Por favor, ingresa un usuario y una contraseña');
+            return;
+        }
+    
+        fetch('http://localhost:4000/v1/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        })
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then(responseData => {
+            if (responseData.resultado === 'user') {
+                callback('user');
+                goTo('/userHome');
+            } else if (responseData.resultado === 'admin') {
+                callback('admin');
+                goTo('/adminHome');
+            } else {
+                alert('Usuario o contraseña incorrectos');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un problema con el servidor.');
+        });
+    };
+    
     const cambioPass= () => {
         goTo('/cambioPass');  
     };
