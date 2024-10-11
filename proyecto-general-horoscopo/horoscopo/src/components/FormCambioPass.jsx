@@ -12,7 +12,7 @@ function FormCambioPass() {
         event.preventDefault();
         try {
             // Reemplaza la URL con el endpoint de tu servidor para actualizar la contraseña
-            const response = await fetch(`http://localhost:4000/v1/signos/cambioPass`, {
+            const response = await fetch(`http://localhost:4000/v1/cambioPass`, {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, currentPassword, newPassword })
