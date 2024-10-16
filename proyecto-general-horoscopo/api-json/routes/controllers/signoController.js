@@ -82,10 +82,18 @@ const updatePassword = async (req, res) => {
     }
 };
 
+const leerDatos = async (req, res) => {
+    
+        const user = await Usuario.find();
+        res.json(user);
+       
+};
+
 module.exports = {
     getAllSignos,
     getOneSigno,
     updateSigno,
     compareLogin,
-    updatePassword
+    updatePassword,
+    leerDatos
 };
