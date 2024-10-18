@@ -1,4 +1,7 @@
 #textoSigno{
+    margin-top: 0px;
+    margin: 50px;
+    width: 400px;
     border-radius: 10px;
     display: flex;
     background-color: rgb(95, 82, 82);

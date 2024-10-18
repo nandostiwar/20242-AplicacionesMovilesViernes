@@ -2,26 +2,27 @@ import './App.css';
 import Form from './components/Form';
 import UserHome from './components/UserHome';
 import AdminHome from './components/AdminHome';
-import DataHome from './components/DataHome';
-import NewHome from './components/NewHome';
-
-import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
+import ChangePassword from './components/ChangePassword';
+import CreateUser from './components/CreateUser'; // Importa el nuevo componente
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import CreateAdmin from './components/CreateAdmin'; // Importa el nuevo componente
 
 function App() {
   const [user, setUser] = useState(null);
-  return (  
+
+  return (
     <BrowserRouter>
-      {/* <Navigation/> */}
       <Routes>
-        <Route index element={<Form callback={setUser}/>}></Route>
-        <Route path='/userHome' element={<UserHome user={user}/>}></Route>
-        <Route path='/adminHome' element={<AdminHome user={user}/>}></Route>
-        <Route path='/newHome' element={<NewHome user={user}/>}></Route>
-        <Route path='/dataHome' element={<DataHome user={user}/>}></Route>
+        <Route index element={<Form callback={setUser} />} />
+        <Route path='/userHome' element={<UserHome user={user} />} />
+        <Route path='/adminHome' element={<AdminHome user={user} />} />
+        <Route path='/changePassword' element={<ChangePassword />} />
+        <Route path='/createUser' element={<CreateUser />} />
+        <Route path='/createAdmin' element={<CreateAdmin />} /> {/* Nueva ruta */}
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

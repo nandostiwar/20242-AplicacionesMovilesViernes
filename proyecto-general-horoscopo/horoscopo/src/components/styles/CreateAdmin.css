@@ -1,0 +1,98 @@
+/* Estilos generales del contenedor del formulario */
+.container {
+    height: 300px;
+    display: grid;
+    place-items: center;
+    
+}
+
+/* Estilos del título */
+h1 {
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    /* Color blanco para el título */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    /* Texto en mayúsculas */
+    font-style: italic;
+    /* Estilo cursiva */
+}
+
+/* Etiquetas */
+label {
+    font-size: 1.2rem;
+    color: white;
+    /* Etiquetas en blanco */
+    margin-bottom: 10px;
+    display: block;
+    
+}
+
+/* Inputs de usuario y contraseña */
+input[type="text"],
+input[type="password"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    /* Bordes redondeados */
+    font-size: 1rem;
+    background-color: rgb(71, 63, 63);
+    /* Fondo gris oscuro para los inputs */
+    color: white;
+    /* Texto blanco */
+    
+}
+
+/* Checkbox para mostrar la contraseña */
+.show-password {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.show-password input {
+    margin-right: 10px;
+}
+
+.show-password label {
+    font-size: 1rem;
+    color: white;
+}
+
+/* Estilo para los botones */
+#btncrearca {
+    margin-top: 20px;
+    background-color: rgb(48, 27, 238);
+    padding: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+}
+
+#btnhome {
+    margin-top: 20px;
+    background-color: rgb(48, 27, 238);
+    padding: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    
+}
+/* Cambiar color al pasar sobre los botones */
+button:hover {
+    opacity: 0.8;
+}

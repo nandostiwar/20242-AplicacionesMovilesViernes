@@ -1,24 +1,24 @@
 const fs = require('fs/promises');
 const path = require('path');
 
-const getAllSignos = async (req, res)=>{
-    const signo = await fs.readFile(path.join(__dirname,'../../db/signos.json'));
+const getAllSignos = async (req, res) => {
+    const signo = await fs.readFile(path.join(__dirname, '../../db/signos.json'));
     const signosJson = JSON.parse(signo)
     res.json(signosJson);
 }
 
-const getOneSigno = async (req, res)=>{
+const getOneSigno = async (req, res) => {
     const oneSigno = req.params.signo;
-    const allSignos = await fs.readFile(path.join(__dirname,'../../db/signos.json'));
+    const allSignos = await fs.readFile(path.join(__dirname, '../../db/signos.json'));
     const objSignos = JSON.parse(allSignos);
     const result = objSignos[oneSigno];
     res.json(result)
 }
 
-const updateSigno = async (req, res)=>{
+const updateSigno = async (req, res) => {
     const signoEditar = req.params.signoEditar;
-    const {textoEditar} = req.body;
-    const allSignos = await fs.readFile(path.join(__dirname,'../../db/signos.json'));
+    const { textoEditar } = req.body;
+    const allSignos = await fs.readFile(path.join(__dirname, '../../db/signos.json'));
     const objSignos = JSON.parse(allSignos);
 
     const objUpdate = {
@@ -27,84 +27,136 @@ const updateSigno = async (req, res)=>{
     }
 
     // console.log(objUpdate);
-    await fs.writeFile(path.join(__dirname,'../../db/signos.json'), JSON.stringify(objUpdate, null, 2), {encoding: 'utf-8'})
+    await fs.writeFile(path.join(__dirname, '../../db/signos.json'), JSON.stringify(objUpdate, null, 2), { encoding: 'utf-8' })
 
     res.json({
         message: "Updated"
     })
 }
 
-///////////////////////////////////////////////  APARTADO DE USUARIOS    ////////////////////////////////////////////////////////////////
-
-const getAlluser = async (req, res)=>{
-    const credenciales = await fs.readFile(path.join(__dirname,'../../db/credenciales.json'));
-    const credencialesJson = JSON.parse(credenciales)
-    res.json(credencialesJson);
-}
-
-
-const compareLogin = async (req, res) => {
+const login = async (req, res) => {
     const { username, password } = req.body;
-
-    console.log("recibi user: " + username);
-    console.log("recibi pass: " + password);
-
-    if (!username || !password) {
-        return res.status(400).json({ resultado: "Faltan credenciales" });
-    }
 
     try {
-        const credencialesPath = path.join(__dirname, '../../db/credenciales.json');
-        const data = await fs.readFile(credencialesPath, 'utf8');
-        const credenciales = JSON.parse(data);
+        // Intenta primero buscar en credentials.json (usuarios normales)
+        let credentialsPath = path.join(__dirname, '../../db/credentials.json');
+        let credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+        let credentials = JSON.parse(credentialsData);
 
-        // Buscar si el usuario y la contraseña coinciden
-        let userType = null;
-        for (const [type, creds] of Object.entries(credenciales)) {
-            if (creds.username === username && creds.password === password) {
-                userType = type;
-                break;
-            }
+        let user = credentials[username];
+
+        // Si no encuentra en credentials.json, busca en credentialsadmin.json (administradores)
+        if (!user) {
+            credentialsPath = path.join(__dirname, '../../db/credentialsadmin.json');
+            credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+            credentials = JSON.parse(credentialsData);
+            user = credentials[username];
         }
 
-        if (userType) {
-            return res.json({ resultado: userType });
+        if (user && user.password === password) {
+            const response = { success: true, role: user.role, message: 'Datos ingresados correctamente' };
+            res.json(response);
         } else {
-            return res.status(401).json({ resultado: "Credenciales incorrectas" });
+            const response = { success: false, message: 'Datos incorrectos' };
+            res.json(response);
         }
     } catch (error) {
-        console.error("Error leyendo credenciales:", error);
-        return res.status(500).json({ resultado: "Error del servidor" });
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
     }
-}
-//////////////////////////////////////////////////////////////////////////////////////////////
+};
+const changePassword = async (req, res) => {
+    const { username, oldPassword, newPassword } = req.body;
 
-const updateUser = async (req, res)=>{
-    const userEditar = req.params.userEditar;
+    try {
+        let credentialsPath = path.join(__dirname, '../../db/credentials.json');
+        let credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+        let credentials = JSON.parse(credentialsData);
+
+        // Busca primero en credentials.json
+        let user = credentials[username];
+
+        // Si no encuentra en credentials.json, busca en credentialsadmin.json
+        if (!user) {
+            credentialsPath = path.join(__dirname, '../../db/credentialsadmin.json');
+            credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+            credentials = JSON.parse(credentialsData);
+            user = credentials[username];
+        }
+
+        // Verifica si el usuario existe y si la contraseña antigua es correcta
+        if (user && user.password === oldPassword) {
+            // Actualiza la contraseña
+            user.password = newPassword;
+            await fs.writeFile(credentialsPath, JSON.stringify(credentials, null, 2), 'utf-8');
+            res.json({ success: true, message: 'Contraseña cambiada exitosamente' });
+        } else {
+            res.status(400).json({ success: false, message: 'Nombre de usuario o contraseña antigua incorrectos' });
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
+    }
+};
+
+const createUser = async (req, res) => {
     const { username, password } = req.body;
-    const update = await fs.readFile(path.join(__dirname,'../../db/credenciales.json'));
-    const objSignos = JSON.parse(update);
+    const role = 'user'; // Asignamos el rol de 'user' por defecto
 
-    const objUpdate = {
-        ...objSignos,
-        [userEditar]: textoEditar
+    console.log('Received data:', { username, password, role });
+
+    try {
+        const credentialsPath = path.join(__dirname, '../../db/credentials.json');
+
+        const credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+        const credentials = JSON.parse(credentialsData);
+
+        // Verifica si el usuario ya existe
+        if (credentials[username]) {
+            return res.status(400).json({ success: false, message: 'Usuario ya existe' });
+        }
+
+        // Guarda el nuevo usuario con el rol de 'user'
+        credentials[username] = { password, role }; // Aquí se guarda el rol
+        await fs.writeFile(credentialsPath, JSON.stringify(credentials, null, 2), 'utf-8');
+        res.json({ success: true, message: 'Usuario creado exitosamente' });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
     }
+};
+const createAdmin = async (req, res) => {
+    const { username, password } = req.body;
+    const role = 'admin'; // Asignamos el rol de 'admin'
 
-    // console.log(objUpdate);
-    await fs.writeFile(path.join(__dirname,'../../db/credenciales.json'), JSON.stringify(objUpdate, null, 2), {encoding: 'utf-8'})
+    try {
+        const credentialsPath = path.join(__dirname, '../../db/credentialsadmin.json');
 
-    res.json({
-        message: "Updated"
-    })
-}
+        const credentialsData = await fs.readFile(credentialsPath, 'utf-8');
+        const credentials = JSON.parse(credentialsData);
+
+        // Verifica si el administrador ya existe
+        if (credentials[username]) {
+            return res.status(400).json({ success: false, message: 'Administrador ya existe' });
+        }
+
+        // Guarda el nuevo administrador
+        credentials[username] = { password, role };
+        await fs.writeFile(credentialsPath, JSON.stringify(credentials, null, 2), 'utf-8');
+        res.json({ success: true, message: 'Administrador creado exitosamente' });
+    } catch (error) {
+        console.error('Error:', error);
+        res.status(500).json({ success: false, message: 'Error en el servidor' });
+    }
+};
 
 
 module.exports = {
     getAllSignos,
+    login,
     getOneSigno,
+    changePassword,
     updateSigno,
-    compareLogin,
-    updateUser,
-    getAlluser
-    //newUser
-};
+    createUser,
+    createAdmin
+}
