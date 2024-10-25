@@ -1,0 +1,118 @@
+/* Contenedor principal */
+.enter-code {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Título */
+.enter-code h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+.enter-code form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Campo de código */
+.enter-code input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    max-width: 200px;
+}
+
+/* Botón de enviar */
+.enter-code button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.enter-code button:hover {
+    background-color: #218838;
+}
+
+/* Mensaje */
+.enter-code p {
+    color: #dc3545;
+    margin-top: 20px;
+}
+
+.enter-code h3 {
+    color: #28a745;
+    margin-top: 20px;
+}
+
+/* Contenedor principal */
+.code-history {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+/* Título */
+.code-history h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Tabla */
+.code-history table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+/* Encabezados */
+.code-history th {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+}
+
+/* Celdas */
+.code-history td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Resaltar filas alternas */
+.code-history tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Celdas de premio */
+.code-history td.prize {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Estilo para mala suerte */
+.code-history td.prize:empty::before {
+    content: "Mala suerte";
+    color: #dc3545;
+    font-weight: bold;
+}

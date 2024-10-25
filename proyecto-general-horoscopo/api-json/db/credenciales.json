@@ -1,7 +1,7 @@
 [
   {
     "userId": "admin",
-    "userPass": "hola",
+    "userPass": "123456",
     "perfil": "admin"
   },
   {
@@ -23,5 +23,10 @@
     "userId": "kevin",
     "userPass": "kevin",
     "perfil": "admin"
+  },
+  {
+    "userId": "mateo",
+    "userPass": "mateo",
+    "perfil": "user"
   }
 ]
