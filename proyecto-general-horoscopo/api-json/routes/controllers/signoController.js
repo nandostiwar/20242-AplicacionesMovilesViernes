@@ -35,59 +35,108 @@ const updateSigno = async (req, res)=>{
 }
 
 const compareLogin = async (req, res) => {
-    const { body } = req;
-    const { username, password } = body;
+    const { username, password } = req.body;
 
     try {
-        // Leer el archivo de credenciales
-        const filePath = path.resolve(__dirname, '../../db/credenciales.json');
-        const data = await fs.readFile(filePath, 'utf-8');
-        const credentials = JSON.parse(data);
+        // Rutas de los archivos JSON
+        const adminCred = path.resolve(__dirname, '../../db/admin.json');
+        const userCred = path.resolve(__dirname, '../../db/user.json');
 
-        // Buscar en las credenciales si hay una coincidencia
-        const user = credentials.find(c => c.userId === username && c.userPass === password);
+        // Leer ambos archivos de credenciales
+        const adminSoli = await fs.readFile(adminCred, 'utf-8');
+        const userSoli = await fs.readFile(userCred, 'utf-8');
 
-        if (user) {
-            res.json({
-                resultado: user.perfil
+        const adminCredentials = JSON.parse(adminSoli);
+        const userCredentials = JSON.parse(userSoli);
+
+        // Buscar coincidencias en admin
+        const adminUser = adminCredentials.find(c => c.userId.trim() === username.trim() && c.userPass.trim() === password.trim());
+        
+        // Buscar coincidencias en usuarios regulares
+        const normalUser = userCredentials.find(c => c.userId.trim() === username.trim() && c.userPass.trim() === password.trim());
+
+        if (adminUser) {
+            return res.json({
+                resultado: 'admin'
+            });
+        } else if (normalUser) {
+            return res.json({
+                resultado: 'user'
             });
         } else {
-            res.status(401).json({
+            return res.status(401).json({
                 resultado: "Credenciales incorrectas"
             });
         }
     } catch (error) {
-        res.status(500).json({
+        console.error("Error en el servidor:", error);
+        return res.status(500).json({
             resultado: "Error en el servidor"
         });
     }
 };
 
+
 const updatePassword = async (req, res) => {
-    const { username, newPassword } = req.body; // Recibimos username y newPassword
-    const filePath = path.join(__dirname, '../../db/credenciales.json');
+    const { username, password, newPassword } = req.body; // Recibimos username, password y newPassword
+    const adminCred = path.join(__dirname, '../../db/admin.json');
+    const userCred = path.join(__dirname, '../../db/user.json');
 
     try {
-        const allUsers = await fs.readFile(filePath, 'utf-8');
-        const objUsers = JSON.parse(allUsers);
+        // Leer ambos archivos de usuarios (admin y user)
+        const adminSoli = await fs.readFile(adminCred, 'utf-8');
+        const userSoli = await fs.readFile(userCred, 'utf-8');
+        
+        const objAdminSoli = JSON.parse(adminSoli);
+        const objUserSoli = JSON.parse(userSoli);
 
-        // Encontrar el usuario
-        const userIndex = objUsers.findIndex(user => user.userId === username);
-        if (userIndex === -1) {
-            return res.status(404).json({
-                message: "User no encontrado"
+        // Buscar en administradores
+        const adminIndex = objAdminSoli.findIndex(user => user.userId === username);
+        if (adminIndex !== -1) {
+            // Validar si la contraseña actual es correcta en admin
+            if (objAdminSoli[adminIndex].userPass !== password) {
+                return res.status(401).json({
+                    message: "Contraseña incorrecta para admin"
+                });
+            }
+
+            // Actualizamos la contraseña del admin
+            objAdminSoli[adminIndex].userPass = newPassword;
+
+            // Guardamos los cambios en el archivo de admin
+            await fs.writeFile(adminCred, JSON.stringify(objAdminSoli, null, 2), { encoding: 'utf-8' });
+
+            return res.json({
+                message: "Password de admin ha sido modificado"
             });
         }
 
-        // Actualizamos la contraseña del usuario
-        objUsers[userIndex].userPass = newPassword;
+        // Buscar en usuarios regulares
+        const userIndex = objUserSoli.findIndex(user => user.userId === username);
+        if (userIndex !== -1) {
+            // Validar si la contraseña actual es correcta en user
+            if (objUserSoli[userIndex].userPass !== password) {
+                return res.status(401).json({
+                    message: "Contraseña incorrecta para usuario"
+                });
+            }
 
-        // Guardamos los cambios en el archivo JSON
-        await fs.writeFile(filePath, JSON.stringify(objUsers, null, 2), { encoding: 'utf-8' });
+            // Actualizamos la contraseña del usuario
+            objUserSoli[userIndex].userPass = newPassword;
 
-        // Enviar respuesta exitosa
-        res.json({
-            message: "Password ha sido modificado"
+            // Guardamos los cambios en el archivo de usuarios
+            await fs.writeFile(userCred, JSON.stringify(objUserSoli, null, 2), { encoding: 'utf-8' });
+
+            return res.json({
+                message: "Password de usuario ha sido modificado"
+                
+            });
+            
+        }
+
+        // Si no se encontró en ninguno de los archivos
+        return res.status(404).json({
+            message: "Usuario no encontrado"
         });
 
     } catch (error) {
@@ -98,12 +147,24 @@ const updatePassword = async (req, res) => {
     }
 };
 
+
 const addUser = async (req, res) => {
-    const { username, password, perfil } = req.body; // Recibimos el username, password y perfil del cuerpo de la solicitud
-    const filePath = path.join(__dirname, '../../db/credenciales.json');
+    const { username, password, perfil } = req.body; // Recibimos el username, password y perfil
+    let filePath;
+
+    // Determinar el archivo JSON según el perfil
+    if (perfil === 'admin') {
+        filePath = path.join(__dirname, '../../db/admin.json');
+    } else if (perfil === 'user') {
+        filePath = path.join(__dirname, '../../db/user.json');
+    } else {
+        return res.status(400).json({
+            message: "Perfil inválido"
+        });
+    }
 
     try {
-        // Leer el archivo de credenciales
+        // Leer el archivo de credenciales correspondiente
         const allUsers = await fs.readFile(filePath, 'utf-8');
         const objUsers = JSON.parse(allUsers);
 
@@ -115,7 +176,6 @@ const addUser = async (req, res) => {
             });
         }
 
-        // Agregar el nuevo usuario
         const newUser = {
             userId: username,
             userPass: password,
@@ -123,10 +183,9 @@ const addUser = async (req, res) => {
         };
         objUsers.push(newUser);
 
-        // Guardar los cambios en el archivo JSON
+        // Guardar los cambios en el archivo JSON correspondiente
         await fs.writeFile(filePath, JSON.stringify(objUsers, null, 2), { encoding: 'utf-8' });
 
-        // Responder exitosamente
         res.json({
             message: "Usuario creado exitosamente"
         });
@@ -138,6 +197,7 @@ const addUser = async (req, res) => {
         });
     }
 };
+
 
 
 module.exports = {
