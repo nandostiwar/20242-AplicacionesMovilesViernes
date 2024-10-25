@@ -14,11 +14,11 @@ app.use(express.json());
 
 // Importar las rutas
 const userRoutes = require('./routes/userRoutes');
-const premioRoutes = require('./routes/premioRoutes');
+//const premioRoutes = require('./routes/premioRoutes');
 
 // Usar las rutas
 app.use('/api/users', userRoutes);
-app.use('/api/premios', premioRoutes);
+//app.use('/api/premios', premioRoutes);
 
 // Conexión a MongoDB
 mongoose.connect(process.env.MONGO_URI, {

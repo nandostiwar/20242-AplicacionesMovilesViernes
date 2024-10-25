@@ -24,7 +24,7 @@ const Login = () => {
       if (response.ok) {
         console.log('Inicio de sesión exitoso:', data);
         // Redirige al usuario a la página deseada
-        navigate('/dashboard'); // Cambia '/dashboard' por la ruta que quieras
+        navigate('/UserProfile'); // Cambia '/dashboard' por la ruta que quieras
       } else {
         console.error(data.message); // Muestra el mensaje de error
         setError(data.message);

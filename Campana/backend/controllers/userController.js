@@ -14,6 +14,7 @@ const registerUser = async (req, res) => {
 
     if (existingUser) {
       return res.status(400).json({ message: 'El correo ya está en uso.' });
+      //return res.status(400).json({ message: existingUser });
     }
 
     // Encriptar la contraseña
@@ -34,7 +35,7 @@ const registerUser = async (req, res) => {
   } catch (error) {
     console.error("Error al registrar el usuario:", error); // Imprimir el error en la consola
     if (error.code === 11000) {
-      return res.status(400).json({ message: 'El correo ya está en uso.' });
+      return res.status(400).json({ message: 'El correo ya está en uso....'+ email });
     }
     res.status(500).json({ message: 'Error al registrar el usuario.', error });
   }

@@ -3,7 +3,7 @@
 const Premio = require('../models/Premio');
 
 // Ingresar código
-exports.ingresarCodigo = async (req, res) => {
+const ingresarCodigo = async (req, res) => {
   const { codigo, usuarioId } = req.body;
 
   try {
@@ -34,4 +34,8 @@ exports.obtenerCodigos = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: 'Error al obtener los códigos' });
   }
+
+
 };
+
+module.exports = { ingresarCodigo };
